@@ -122,7 +122,7 @@ namespace CASUILayer.Controllers
                 return RedirectToAction("ViewAppointment");
             }
 
-            return View(frontOfficeExecutive);
+            return View();
         }
 
 

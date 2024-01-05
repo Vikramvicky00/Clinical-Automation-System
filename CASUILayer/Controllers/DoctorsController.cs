@@ -96,9 +96,8 @@ namespace CASUILayer.Controllers
                 return RedirectToAction("DoctorLogin", "Home");
             }
             var obj = Session["DocObject"] as Doctor;
-            Doctor doctor = service.GetDoctorById(obj.DoctorId);
-            ViewBag.SpecializationId = new SelectList(db.Specializations, "SpecializationId", "SpecializationName", doctor.SpecializationId);
-            return View(doctor);
+            ViewBag.SpecializationId = new SelectList(db.Specializations, "SpecializationId", "SpecializationName", obj.SpecializationId);
+            return View(obj);
         }
         [HttpPost]
         public ActionResult ProfileChange([Bind(Include = "DoctorId,DoctorName,Email,Password,Gender,DOB,Phone,Address,IsAvailable,SpecializationId,Timings")] Doctor doctor)
@@ -109,7 +108,7 @@ namespace CASUILayer.Controllers
                 return RedirectToAction("AppointmentList");
             }
             ViewBag.SpecializationId = new SelectList(db.Specializations, "SpecializationId", "SpecializationName", doctor.SpecializationId);
-            return View(doctor);
+            return View();
         }
 
    

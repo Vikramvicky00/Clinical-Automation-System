@@ -159,8 +159,7 @@ namespace CASUILayer.Controllers
                 return RedirectToAction("PatientLogin", "Home");
             }
             var obj = Session["PatientObj"] as Patient;
-            Patient ph = service.FindPatientById(obj.PatientId);
-            return View(ph);
+            return View(obj);
         }
 
         [HttpPost]
@@ -171,7 +170,7 @@ namespace CASUILayer.Controllers
                 service.UpdatePatient(patient);
                 return RedirectToAction("Index");
             }
-            return View(patient);
+            return View();
         }
 
 
