@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Web.Mvc;
 using CASServiceLayer.Models;
 using DALLayer;
@@ -8,10 +9,10 @@ namespace CASUILayer.Controllers
     public class AdminsController : Controller
     {
         private readonly ClinicalDbContext db;//just for using the specialization table
-        private readonly Service Service;
+        private readonly ServiceOperations Service;
         public AdminsController()
         {
-            Service = new Service();
+            Service = new ServiceOperations();
             db = new ClinicalDbContext();
         }
 

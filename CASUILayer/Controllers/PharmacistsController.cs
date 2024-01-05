@@ -7,10 +7,10 @@ namespace CASUILayer.Controllers
 {
     public class PharmacistsController : Controller
     {
-        private readonly Service service;
+        private readonly ServiceOperations service;
         public PharmacistsController()
         {
-            service = new Service(); //invoke service class to acces operations
+            service = new ServiceOperations(); //invoke service class to acces operations
         }
 
         //Get Medicine list

@@ -7,11 +7,11 @@ namespace CASUILayer.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly Service service; //service object define
+        private readonly ServiceOperations service; //service object define
 
         public HomeController()
         {
-            service = new Service();//object create
+            service = new ServiceOperations();//object create
         }
 
         public ActionResult Index()//landing page

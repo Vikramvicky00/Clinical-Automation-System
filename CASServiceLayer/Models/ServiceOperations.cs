@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CASServiceLayer.Models
 {
-    public class Service
+    public class ServiceOperations
     {
         private readonly DoctorRepository _doctor;      //object define
         private readonly PatientRepository _patient;
@@ -14,7 +14,7 @@ namespace CASServiceLayer.Models
         private readonly AppointmentRepository _appointment;
         private readonly MessageRepository _message;
 
-        public Service()
+        public ServiceOperations()
         {    //object =new ClassName();
             _doctor = new DoctorRepository();   //object creation
             _patient = new PatientRepository();

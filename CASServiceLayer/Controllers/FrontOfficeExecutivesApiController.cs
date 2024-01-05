@@ -15,10 +15,10 @@ namespace CASServiceLayer.Controllers
 {
     public class FrontOfficeExecutivesApiController : ApiController
     {
-        private readonly Service service;
+        private readonly ServiceOperations service;
         public FrontOfficeExecutivesApiController()
         {
-            service = new Service();
+            service = new ServiceOperations();
         }
 
         // GET: api/FrontOfficeExecutivesApi

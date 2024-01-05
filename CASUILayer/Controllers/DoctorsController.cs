@@ -9,11 +9,11 @@ namespace CASUILayer.Controllers
     public class DoctorsController : Controller
     {
         private ClinicalDbContext db = new ClinicalDbContext();
-        private Service service;
+        private ServiceOperations service;
 
         public DoctorsController()
         {
-            service = new Service();
+            service = new ServiceOperations();
         }
 
         public ActionResult MedicineList()

@@ -15,10 +15,10 @@ namespace CASServiceLayer.Controllers
 {
     public class PatientsApiController : ApiController
     {
-        private readonly Service service;
+        private readonly ServiceOperations service;
         public PatientsApiController()
         {
-            service = new Service();
+            service = new ServiceOperations();
         }
 
         // GET: api/PatientsApi

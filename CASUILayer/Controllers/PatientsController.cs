@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using DALLayer;
 using Message = DALLayer.Message;
-using Service = CASServiceLayer.Models.Service;
+using ServiceOperations = CASServiceLayer.Models.ServiceOperations;
 
 namespace CASUILayer.Controllers
 {
     public class PatientsController : Controller
     {
         //private ClinicalDbContext db = new ClinicalDbContext();
-        private readonly Service service;
+        private readonly ServiceOperations service;
         
         public PatientsController()
         {
-            service=new Service();
+            service=new ServiceOperations();
         }
        
         // GET: Patients

@@ -9,12 +9,12 @@ namespace CASUILayer.Controllers
     public class FrontOfficeExecutivesController : Controller
     {
         
-        private readonly Service service;//object define
+        private readonly ServiceOperations service;//object define
 
 
         public FrontOfficeExecutivesController()
         {
-            service = new Service(); //object create
+            service = new ServiceOperations(); //object create
         }
 
 

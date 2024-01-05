@@ -10,10 +10,10 @@ namespace CASServiceLayer.Controllers
 
     public class DoctorsApiController : ApiController
     {
-        private readonly Service service;//object define
+        private readonly ServiceOperations service;//object define
         public DoctorsApiController()
         {
-            service = new Service();//object create
+            service = new ServiceOperations();//object create
         }
         // GET: api/DoctorsApi
         public List<Doctor> GetDoctors()
