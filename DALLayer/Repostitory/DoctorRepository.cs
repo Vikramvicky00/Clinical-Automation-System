@@ -29,7 +29,7 @@ namespace DALLayer.Repostitory
         }
 
 
-        public Doctor FindDoctorByID(string mail)
+        public Doctor FindDoctorByEmail(string mail)
         {                                               //converting Uppercase to LowerCase of mail
             return _context.Doctors.FirstOrDefault(m => m.Email.ToLower() == mail.ToLower());
         }

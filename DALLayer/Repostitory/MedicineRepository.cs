@@ -47,9 +47,9 @@ namespace DALLayer.Repostitory
             _context.Medicines.Remove(medicine);
             _context.SaveChanges();
         }
-        public Admin FindAdminByName(string mail)
+        public Admin FindAdminByEmail(string email)
         {
-            return _context.Admins.FirstOrDefault(m => m.EmailId.ToLower() == mail.ToLower());
+            return _context.Admins.FirstOrDefault(m => m.EmailId.ToLower() == email.ToLower());
         }
 
         public bool checkAdminLogin(Admin admin)

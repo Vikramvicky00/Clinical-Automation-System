@@ -51,7 +51,7 @@ namespace DALLayer.Repostitory
         {
             return _Db.Patients.Find(id); // select * from patients where patientId=id;
         }
-        public Patient FindPatientByName(string Email)
+        public Patient FindPatientByEmail(string Email)
         {
             return _Db.Patients.FirstOrDefault(pro => pro.Email == Email); //select * from patients where patientEmail=Email;
         }

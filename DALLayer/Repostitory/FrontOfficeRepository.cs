@@ -52,7 +52,7 @@ namespace DALLayer.Repostitory
             return _context.FrontOfficeExecutives.Any(e => e.FrontOffExecutiveId == frontOfficeExecutiveId);
         }
 
-        public FrontOfficeExecutive FindFrontOfficeByName(string Email)
+        public FrontOfficeExecutive FindFrontOfficeByEmail(string Email)
         {
             return _context.FrontOfficeExecutives.FirstOrDefault(m => m.Email.ToLower() == Email.ToLower()); ;
         }

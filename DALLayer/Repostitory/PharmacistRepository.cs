@@ -23,9 +23,9 @@ namespace DALLayer.Repostitory
         {
             return  _context.Pharmacists.Find(pharmacistId);
         }
-        public Pharmacist FindPharmacistByName(string Name)
+        public Pharmacist FindPharmacistByEmail(string email)
         {
-            return _context.Pharmacists.FirstOrDefault(f=>f.Email == Name);
+            return _context.Pharmacists.FirstOrDefault(f=>f.Email == email);
         }
 
         public bool checkPharmistLogin(Pharmacist pharmacist)

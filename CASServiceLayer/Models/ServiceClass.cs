@@ -67,7 +67,7 @@ namespace CASServiceLayer.Models
         ///
         public Doctor FindDoctorByEmail(string mail)//name FindDoctorByEmail()
         {
-            return _doctor.FindDoctorByID(mail);
+            return _doctor.FindDoctorByEmail(mail);
         }
         public Doctor GetDoctorById(int doctorId)
         {
@@ -124,7 +124,7 @@ namespace CASServiceLayer.Models
         }
         public Patient FindPatientByEmail(string Email)
         {
-            return _patient.FindPatientByName(Email);
+            return _patient.FindPatientByEmail(Email);
         }
         
         /* Front Office Executive Methods */
@@ -134,7 +134,7 @@ namespace CASServiceLayer.Models
         }
         public FrontOfficeExecutive FindFrontOfficeByEmail(string Email)
         {
-            return _frontOffice.FindFrontOfficeByName(Email);
+            return _frontOffice.FindFrontOfficeByEmail(Email);
         }
         public FrontOfficeExecutive GetFrontOfficeExecutiveById(int frontOfficeExecutiveId)
         {
@@ -175,7 +175,7 @@ namespace CASServiceLayer.Models
         }
         public  Pharmacist FindPharmacistByEmail(string email)
         {
-            return _pharmacist.FindPharmacistByName(email);
+            return _pharmacist.FindPharmacistByEmail(email);
         }
 
         public void UpdatePharmacist(Pharmacist pharmacist)
@@ -219,7 +219,7 @@ namespace CASServiceLayer.Models
 
         public Admin FindAdminByEmail(string mail)
         {
-            return _medicine.FindAdminByName(mail);
+            return _medicine.FindAdminByEmail(mail);
         }
 
         public void DeleteMedicine(int medicineId)

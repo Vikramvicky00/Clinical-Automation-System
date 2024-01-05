@@ -8,7 +8,7 @@ namespace CASUILayer.Controllers
 {
     public class FrontOfficeExecutivesController : Controller
     {
-        //private ClinicalDbContext db = new ClinicalDbContext();
+        
         private readonly Service service;//object define
 
 
