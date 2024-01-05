@@ -205,6 +205,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\DoctorsApiController.cs" />
     <Compile Include="Controllers\FrontOfficeExecutivesApiController.cs" />
+    <Compile Include="Controllers\HomeWebController.cs" />
     <Compile Include="Controllers\MedicinesApiController.cs" />
     <Compile Include="Controllers\PatientsApiController.cs" />
     <Compile Include="Controllers\PharmacistsApiController.cs" />
