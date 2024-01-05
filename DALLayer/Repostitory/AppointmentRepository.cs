@@ -6,7 +6,7 @@ namespace DALLayer.Repostitory
 {
     public class AppointmentRepository
     {
-        private ClinicalDbContext _context;
+        private readonly ClinicalDbContext _context;
         public AppointmentRepository() 
         {
             _context = new ClinicalDbContext();

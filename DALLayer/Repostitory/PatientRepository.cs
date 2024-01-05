@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 
 namespace DALLayer.Repostitory
 {
     public class PatientRepository //class name
     {
-        private ClinicalDbContext _Db; //define database class object
+        private readonly ClinicalDbContext _Db; //define database class object
 
         public PatientRepository() 
         {

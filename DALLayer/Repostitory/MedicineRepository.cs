@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DALLayer.Repostitory
 {
     public class MedicineRepository
     {
-        private ClinicalDbContext _context;
+        private readonly ClinicalDbContext _context;
         public MedicineRepository() 
         {
             _context = new ClinicalDbContext();
