@@ -70,7 +70,7 @@ namespace CASServiceLayer.Models
         }
         //-------------------------------
         ///
-        public Doctor FindDoctorByID(string mail)//name FindDoctorByEmail()
+        public Doctor FindDoctorByEmail(string mail)//name FindDoctorByEmail()
         {
             return _doctor.FindDoctorByID(mail);
         }
@@ -127,7 +127,7 @@ namespace CASServiceLayer.Models
         {
             return _patient.FindPatientById(id);
         }
-        public Patient FindPatientByName(string Email)
+        public Patient FindPatientByEmail(string Email)
         {
             return _patient.FindPatientByName(Email);
         }

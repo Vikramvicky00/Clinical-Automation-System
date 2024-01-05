@@ -1,7 +1,6 @@
 ﻿using CASServiceLayer.Models;
 using DALLayer;
 using System;
-using System.Numerics;
 using System.Web.Mvc;
 
 namespace CASUILayer.Controllers
@@ -43,7 +42,8 @@ namespace CASUILayer.Controllers
                     ModelState.AddModelError("", "InCorrect Email ID and Password");
                     return View();    //Admin login
                 }
-            }return View();
+            }
+            return View();
         }
 
         public ActionResult DoctorLogin()
@@ -59,7 +59,7 @@ namespace CASUILayer.Controllers
             {
                 if (service.checkDoctorLogin(doctor))
                 {
-                    Doctor doc = service.FindDoctorByID(doctor.Email);
+                    Doctor doc = service.FindDoctorByEmail(doctor.Email);
                     Session["DocObject"] = doc;
                     return RedirectToAction("AppointmentList", "Doctors");
                 }
@@ -85,7 +85,7 @@ namespace CASUILayer.Controllers
             {
                 if (service.checkPatientLogin(patient))
                  {
-                    Patient patient1 = service.FindPatientByName(patient.Email);
+                    Patient patient1 = service.FindPatientByEmail(patient.Email);
                     Session["PatientObj"] = patient1;
                     return RedirectToAction("Index", "Patients");
                 }
@@ -208,7 +208,7 @@ namespace CASUILayer.Controllers
                 case 2:
                     if (service.Checkpass(pass1, pass2))
                     {
-                        Doctor doc = service.FindDoctorByID(email);
+                        Doctor doc = service.FindDoctorByEmail(email);
                         if(doc== null)
                         {
                             ModelState.AddModelError("", "Email id not found");
@@ -223,7 +223,7 @@ namespace CASUILayer.Controllers
                     if (service.Checkpass(pass1, pass2))
                     {
                         
-                        Patient patient = service.FindPatientByName(email);
+                        Patient patient = service.FindPatientByEmail(email);
                         if (patient == null)
                         {
                             ModelState.AddModelError("", "Email id not found");
