@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using DALLayer;
-using Message = DALLayer.Message;
-using ServiceOperations = CASServiceLayer.Models.ServiceOperations;
+using CASServiceLayer.Models;
 
 namespace CASUILayer.Controllers
 {

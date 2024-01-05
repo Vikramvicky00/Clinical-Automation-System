@@ -119,7 +119,7 @@ namespace CASUILayer.Controllers
             if (ModelState.IsValid)
             { 
                 service.UpdateFrontOfficeExecutive(frontOfficeExecutive);
-                return RedirectToAction("Index");
+                return RedirectToAction("ViewAppointment");
             }
 
             return View(frontOfficeExecutive);
