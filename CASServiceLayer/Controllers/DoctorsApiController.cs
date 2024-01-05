@@ -4,10 +4,10 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using CASServiceLayer.Models;
 using DALLayer;
-using DALLayer.Repostitory;
 
 namespace CASServiceLayer.Controllers
 {
+
     public class DoctorsApiController : ApiController
     {
         private readonly Service service;//object define

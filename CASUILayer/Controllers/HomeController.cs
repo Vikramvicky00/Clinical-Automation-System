@@ -32,7 +32,7 @@ namespace CASUILayer.Controllers
             {
                 if (service.checkAdminLogin(admin)) //checks the admin details are vaild or not
                 {
-                    Admin ad = service.FindAdminByName(admin.EmailId);  //used to find the admin id details by using admin emailid
+                    Admin ad = service.FindAdminByEmail(admin.EmailId);  //used to find the admin id details by using admin emailid
                     Session["AdminObject"] = ad; // stores the admin object in session to used the data of the admin in the view,used in profile change
 
                     return RedirectToAction("AdminIndex", "Admins");// return the views to the AdminIndex view of Admins controller 
@@ -140,7 +140,7 @@ namespace CASUILayer.Controllers
             {
                 if (service.checkFOLogin(frontOffice))
                 {
-                    FrontOfficeExecutive FE1 = service.FindFrontOfficeByName(frontOffice.Email);
+                    FrontOfficeExecutive FE1 = service.FindFrontOfficeByEmail(frontOffice.Email);
                     Session["FOObject"] = FE1;
                     return RedirectToAction("ViewAppointment", "FrontOfficeExecutives");  
                 }
@@ -167,7 +167,7 @@ namespace CASUILayer.Controllers
 
                 if (service.checkPharmacistLogin(pharmacist))
                 {
-                    Pharmacist Ph1 = service.FindPharmacistByName(pharmacist.Email);
+                    Pharmacist Ph1 = service.FindPharmacistByEmail(pharmacist.Email);
                     Session["PhObject"] = Ph1;
                     return RedirectToAction("Index", "Pharmacists");
                 }
@@ -193,7 +193,7 @@ namespace CASUILayer.Controllers
                 case 1:
                     if (service.Checkpass(pass1, pass2)) //validate the 2 password are same using check pass method in service class
                     {
-                        Admin ad = service.FindAdminByName(email); //find the email id is found or not, if not found it returns null
+                        Admin ad = service.FindAdminByEmail(email); //find the email id is found or not, if not found it returns null
                         if (ad == null)
                         {
                             ModelState.AddModelError("", "Email id not found");
@@ -236,7 +236,7 @@ namespace CASUILayer.Controllers
                     break;
                 case 4:
                    
-                        FrontOfficeExecutive Fo = service.FindFrontOfficeByName(email);
+                        FrontOfficeExecutive Fo = service.FindFrontOfficeByEmail(email);
                         if (Fo == null)
                         {
                             ModelState.AddModelError("", "Email id not found");
@@ -249,7 +249,7 @@ namespace CASUILayer.Controllers
                 case 5:
                     if (service.Checkpass(pass1, pass2))
                     {
-                        Pharmacist ph = service.FindPharmacistByName(email);
+                        Pharmacist ph = service.FindPharmacistByEmail(email);
                         if (ph == null)
                         {
                             ModelState.AddModelError("", "Email id not found");

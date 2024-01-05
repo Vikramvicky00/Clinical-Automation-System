@@ -1,11 +1,6 @@
 ﻿using DALLayer;
 using DALLayer.Repostitory;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace CASServiceLayer.Models
 {
@@ -137,7 +132,7 @@ namespace CASServiceLayer.Models
         {
             return _frontOffice.GetAllFrontOfficeExecutives();
         }
-        public FrontOfficeExecutive FindFrontOfficeByName(string Email)
+        public FrontOfficeExecutive FindFrontOfficeByEmail(string Email)
         {
             return _frontOffice.FindFrontOfficeByName(Email);
         }
@@ -178,9 +173,9 @@ namespace CASServiceLayer.Models
         {
             _pharmacist.AddPharmacist(pharmacist);
         }
-        public  Pharmacist FindPharmacistByName(string Name)
+        public  Pharmacist FindPharmacistByEmail(string email)
         {
-            return _pharmacist.FindPharmacistByName(Name);
+            return _pharmacist.FindPharmacistByName(email);
         }
 
         public void UpdatePharmacist(Pharmacist pharmacist)
@@ -222,7 +217,7 @@ namespace CASServiceLayer.Models
 
 
 
-        public Admin FindAdminByName(string mail)
+        public Admin FindAdminByEmail(string mail)
         {
             return _medicine.FindAdminByName(mail);
         }

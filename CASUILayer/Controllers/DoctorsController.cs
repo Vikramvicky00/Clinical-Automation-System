@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using CASServiceLayer.Models;
 using DALLayer;
@@ -23,7 +22,7 @@ namespace CASUILayer.Controllers
             {
                 return RedirectToAction("DoctorLogin", "Home");
             }
-            return View(db.Medicines.ToList()); 
+            return View(service.GetAllMedicines()); 
         }
 
         [HttpPost]
