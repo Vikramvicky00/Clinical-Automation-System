@@ -1,10 +1,10 @@
 ﻿@model DALLayer.Doctor
 
 @{
-    ViewBag.Title = "DoctorLogin";
+    ViewBag.Title = "CAS";
     Layout = null;
 }
-
+<title>@ViewBag.Title</title>
 <style>
     body {
         background-image: url('/Scripts/Backgroundlogin/2.jpg');
@@ -17,7 +17,6 @@
         background-color: inherit;
         width: 500px;
         margin: 7em auto;
-
         max-width: 80%;
         opacity: 0.8;
         height: 700px;
@@ -37,35 +36,36 @@
     }
 
     .un {
-     width: 100%; /* Full width for textboxes */
-     height: 40px;
-     color: black;
-     margin-top: 30px;
-     font-weight: 400;
-     font-size: 20px;
-     letter-spacing: 1px;
-     padding: 10px;
-     margin-bottom: 20px; /* Adjusted margin for better spacing */
-     border: none;
-     border-radius: 80px;
-     box-sizing: border-box;
-     font-family: 'Ubuntu', sans-serif;
- }
- .pass {
-     width: 100%; /* Full width for textboxes */
-     height: 40px;
-     color: black;
-     margin-bottom: 60px;
-     font-weight: 400;
-     font-size: 20px;
-     letter-spacing: 1px;
-     padding: 10px;
-     margin-bottom: 20px; /* Adjusted margin for better spacing */
-     border: none;
-     border-radius: 80px;
-     box-sizing: border-box;
-     font-family: 'Ubuntu', sans-serif;
- }
+        width: 100%; /* Full width for textboxes */
+        height: 40px;
+        color: black;
+        margin-top: 30px;
+        font-weight: 400;
+        font-size: 20px;
+        letter-spacing: 1px;
+        padding: 10px;
+        margin-bottom: 20px; /* Adjusted margin for better spacing */
+        border: none;
+        border-radius: 80px;
+        box-sizing: border-box;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .pass {
+        width: 100%; /* Full width for textboxes */
+        height: 40px;
+        color: black;
+        margin-bottom: 60px;
+        font-weight: 400;
+        font-size: 20px;
+        letter-spacing: 1px;
+        padding: 10px;
+        margin-bottom: 20px; /* Adjusted margin for better spacing */
+        border: none;
+        border-radius: 80px;
+        box-sizing: border-box;
+        font-family: 'Ubuntu', sans-serif;
+    }
 
     .submit {
         cursor: pointer;
@@ -124,31 +124,31 @@
 
     @using (Html.BeginForm("DoctorLogin", "Home", FormMethod.Post))
     {
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="un">
-            @Html.LabelFor(model => model.Email, new { @class = "control-label" })
-            @Html.TextBoxFor(model => model.Email, new { @class = "un form-control outlined-textbox" })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    <div class="un">
+        @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Email, new { @class = "un form-control outlined-textbox" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+    <br /><br /><br />
+    <div class="pass">
+        @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+        <div style="position: relative;">
+            @Html.PasswordFor(model => model.Password, new { @class = "pass form-control outlined-textbox", id = "Password" })
+            <i id="showPasswordIcon" class="show-password" style="position: absolute; right: 10px; top: 50%; cursor: pointer; transform: translateY(-50%);">👁️‍🗨️</i>
         </div>
-        <br /><br /><br />
-        <div class="pass">
-            @Html.LabelFor(model => model.Password, new { @class = "control-label" })
-            <div style="position: relative;">
-                @Html.PasswordFor(model => model.Password, new { @class = "pass form-control outlined-textbox", id = "Password" })
-                <i id="showPasswordIcon" class="show-password" style="position: absolute; right: 10px; top: 50%; cursor: pointer; transform: translateY(-50%);">👁️‍🗨️</i>
-            </div>
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
-        <br />
-        <br />
-        <br />
-        <div class="form-group">
-            <button type="submit" class="submit" style="color: black; font-size: 18px;">Login</button>
-        </div>
-        <div class="forgot">
-            @Html.ActionLink("ResetPassword", "ResetPass", "Home", new { @class = "btn btn-primary" })
-        </div>
+        @Html.ValidationMessageFor(model => model.Password)
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="form-group">
+        <button type="submit" class="submit" style="color: black; font-size: 18px;">Login</button>
+    </div>
+    <div class="forgot">
+        @Html.ActionLink("ResetPassword", "ResetPass", "Home", new { @class = "btn btn-primary" })
+    </div>
     }
 </div>
 @Scripts.Render("~/bundles/ShowPass")

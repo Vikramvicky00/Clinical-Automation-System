@@ -59,21 +59,11 @@ namespace CASUILayer.Controllers
                     service.AddAppointment(appointment);
                     return RedirectToAction("ViewAppointment");
                 }
-                else
-                {
-                    ViewBag.Patient = service.GetAllPatients();
-                    ViewBag.Doctor = service.GetAllDoctors();
-                    return View();
-                }
             }
-            else
-            {
-                ModelState.AddModelError("StartDateTime", "Appointment date must be in the present / future.");
-                ViewBag.Patient = service.GetAllPatients();
-                ViewBag.Doctor = service.GetAllDoctors();
-                return View();
-            }
-           
+            ModelState.AddModelError("StartDateTime", "Appointment date must be in the present / future.");
+            ViewBag.Patient = service.GetAllPatients();
+            ViewBag.Doctor = service.GetAllDoctors();
+            return View();
         }
 
 
