@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous" />
+    @Scripts.Render("~/bundles/BackButtonDisable")
+    <style>
+        .main-container {
+            display: flex;
+            font-size: large;
+        }
+
+        .main-menu {
+            background: #000000;
+            border-right: 1px solid #e5e5e5;
+            top: 71px;
+            position: fixed;
+            bottom: 0;
+            height: 100%;
+            width: 20%;
+            overflow: hidden;
+            transition: width 0.5s;
+        }
+
+        .logo {
+            width: 5px;
+            float: left;
+        }
+
+        .side_icon {
+            width: 50px;
+        }
+
+        .nav-item {
+            float: right;
+        }
+
+
+
+
+        h3 {
+            margin-left: 1.5em;
+            margin-top: 15px;
+            color: white;
+        }
+
+        col-8 mt-lg-5 {
+            margin-top: 5rem;
+        }
+
+        .main-menu li > a:hover {
+            background-color: #333; /* Change the background color on hover */
+            color: #fff; /* Change the text color on hover */
+        }
+
+        .main-menu.collapsed {
+            width: 60px;
+        }
+
+        .main-menu.expanded {
+            width: 250px;
+        }
+
+        .main-menu ul {
+            margin: 7px 0;
+            margin-left: 15px;
+            padding: 0;
+            list-style: none;
+            border-color: aliceblue;
+        }
+
+        .main-menu li > a {
+            position: relative;
+            display: block;
+            color: #999;
+            text-decoration: none;
+            transition: all 0.1s linear;
+            padding: 10px;
+        }
+
+        .main-menu .nav-icon {
+            font-size: 18px;
+        }
+
+        .main-menu .nav-text {
+            width: 190px;
+        }
+
+        .content {
+            margin-left: 60px;
+            padding: 20px;
+        }
+
+        .navbar-custom {
+            background-color: black;
+        }
+
+            .navbar-custom .navbar-nav .nav-link {
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
+        <div class="container">
+            <div class="logo"><img src="~/Scripts/icons/clinicals.png" style="width:50px;height:50px"></div>
+            <h3 style=" margin-left:1.5em;margin-top:15px">Clinical Automation System</h3>
+            <!-- Button for mobile navigation -->
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navigation links moved to the main content area -->
+            </div>
+        </div>
+
+
+
+        <!-- Navigation links placed here -->
+        <ul class="nav">
+            <li class="nav-item">@Html.ActionLink("Edit Profile", "ProfileChange", "Admins", new { area = "" }, new { @class = "btn btn-primary" })</li>
+            <li class="nav-item">@Html.ActionLink("Logout", "LogOut", "Home", new { area = "" }, new { @class = "btn btn-danger" })</li>
+        </ul>
+
+        <!-- Add your main content here -->
+
+    </nav>
+    <div class="row mt-lg-5">
+        <div class="col-3">
+            <div class="main-container">
+                <nav class="main-menu">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("DoctorList")">
+                                <img src="~/Scripts/icons/list.png" class="side_icon" />
+                                <span class="nav-text">
+                                    View Doctors
+                                </span>
+                            </a>
+                        </li>
+                        <!-- Add other menu items as needed -->
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("AddDoctor")">
+                                <img src="~/Scripts/icons/add.png" class="side_icon" />
+                                <span class="nav-text">
+                                    Add Doctor
+                                </span>
+                            </a>
+                        </li>
+                        <!-- Add other menu items as needed -->
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("AdminIndex")">
+                                <img src="~/Scripts/icons/back.png" class="side_icon" />
+                                <span class="nav-text">
+                                    Back to Admin
+                                </span>
+                            </a>
+                        </li>
+                        <!-- Add other menu items as needed -->
+                    </ul>
+
+                </nav>
+
+            </div>
+        </div>
+        <div class="col-8 mt-lg-5">
+            @RenderBody()
+
+        </div>
+    </div>
+    <!-- Add Bootstrap JS and Popper.js for dropdowns if needed -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

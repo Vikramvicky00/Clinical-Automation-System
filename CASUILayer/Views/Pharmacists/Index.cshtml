@@ -1,0 +1,116 @@
+﻿@model IEnumerable<DALLayer.Medicine>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PharmacistLayout.cshtml";
+}
+
+
+
+<h2>Medicine List</h2>
+
+<form method="post">
+    <fieldset>
+        <legend>View Medicines for Patient</legend>
+        <div class="form-group row">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Search Medicine</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Enter Medicine Name" id="MediName" name="MediName" aria-label="Medicine" aria-describedby="basic-addon1" required>
+                <div class="input-group-append">
+                    <button class="btn btn-success ml-1" type="submit" id="button-addon2">Search</button>
+                </div>
+                <div class="input-group-append">
+                    <a class="btn btn-primary ml-1" href="" type="button" id="button-addon2">View All Medicine</a>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<hr />
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Medicine Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Is Available</th>
+                <th scope="col">Tax</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @Html.DisplayFor(modelItem => item.MedicineName)</td>
+                    <td> Rs. @Html.DisplayFor(modelItem => item.Price)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Stock)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsAvailable)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tax)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.MedicineId }, new { @class = "btn btn-primary" })
+                        |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.MedicineId }, new { @class = "btn btn-danger" })
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MedicineName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tax)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedicineName)
+        </td>
+        <td>
+           @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tax)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.MedicineId }, new { @class = "btn btn-primary" })
+            |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MedicineId }, new { @class = "btn btn-danger" })
+
+        </td>
+    </tr>
+    }
+
+</table>

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<DALLayer.Doctor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<div style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        @foreach (var item in Model)
+        {
+            <div style="width: calc(48% - 20px); margin: 10px; padding: 15px; border: 2px solid #ddd; border-radius: 8px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <h3 style="margin-top: 0; color: #333;">Dr.@item.DoctorName</h3>
+                <p style="margin: 8px 0; color: #666;">Specialization : @item.Specialization.SpecializationName</p>
+                <p style="margin: 8px 0; color: #666;">Gender : @item.Gender</p>
+                <p style="margin: 8px 0; color: #666;">Available From : @item.Timings</p>
+                <a href="@Url.Action("BookAppoint", "Patients", new { id = item.DoctorId })" class="btn btn-primary" style="background-color: #007bff; color: #fff; border: 1px solid #007bff; text-decoration: none;">Book Appointment</a>
+            </div>
+        }
+    </div>
+</div>
+
+
+

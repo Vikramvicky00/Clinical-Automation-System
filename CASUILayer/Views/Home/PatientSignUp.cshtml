@@ -1,0 +1,369 @@
+﻿@model DALLayer.Patient
+
+@{
+    ViewBag.Title = "PatientSignUp";
+    Layout = null;
+}
+@Scripts.Render("~/bundles/ShowPass")
+<style>
+    body {
+        background-image: url('/Scripts/Docter.jpg');
+        background-size: cover;
+        background-color: #F3EBF6;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .main {
+        background-color: inherit;
+        width: 70%;
+        padding: 20px;
+        height: 700px;
+        margin: 7em auto;
+        border-radius: 1em;
+        box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+    }
+
+    .Patient {
+        padding-top: 40px;
+        color: #8C55AA;
+        text-align: center;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold;
+        font-size: 23px;
+    }
+
+    .un
+    {
+        width: 100%;
+        height: 40px;
+        color: rgb(38, 50, 56);
+        font-weight: 400;
+        font-size: 17px;
+        letter-spacing: 1px;
+        padding: 10px;
+        margin: 0 auto;
+        border: none;
+        border-radius: 10px;
+        box-sizing: border-box;
+        margin-bottom: 27px;
+        font-family: 'Ubuntu', sans-serif;
+    }
+    .pass {
+        width: 100%;
+        height: 45px;
+        color: rgb(38, 50, 56);
+        font-weight: 400;
+        font-size: 17px;
+        letter-spacing: 1px;
+        padding: 5px;
+        padding: 10px;
+        margin: 0 auto;
+        border: none;
+        border-radius: 10px;
+        box-sizing: border-box;
+        margin-bottom: 27px;
+        font-family: 'Ubuntu', sans-serif;
+    }
+    .add {
+        width: 40%;
+        height: 50px;
+        color: rgb(38, 50, 56);
+        font-weight: 400;
+        font-size: 17px;
+        letter-spacing: 1px;
+        padding: 10px;
+        margin: 0 auto;
+        border: none;
+        border-radius: 10px;
+        box-sizing: border-box;
+        margin-bottom: 27px;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    .un {
+        margin-top: 20px;
+    }
+
+
+    .submit {
+        cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+        background: linear-gradient(to right, #9C27B0, #E040FB);
+        border: 0;
+        padding: 10px 40px;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 0 auto;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        display: inline-block;
+    }
+
+    .forgot {
+        color: #E1BEE7;
+        padding-top: 15px;
+        text-align: center;
+    }
+
+    a {
+        color: #E1BEE7;
+        text-decoration: none;
+    }
+
+    .logo img {
+        width: 100px; /* Adjust the width of your logo */
+        height: auto;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .outlined-textbox {
+        border: 1px solid #ccc;
+        padding: 5px;
+        width: 100%;
+        margin: 0 auto;
+        margin-left: 40px;
+    }
+
+    table {
+        border-spacing: 5px;
+    }
+
+    td {
+        padding-left: 30px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        text-align: left;
+    }
+</style>
+
+<div class="col main">
+    <div class="logo">
+        <img src="https://img.icons8.com/office/80/triangular-bandage.png" alt="Logo" />
+    </div>
+    <h2 class="Patient">Registration Form</h2>
+
+    @using (Html.BeginForm("PatientSignUp", "Home", FormMethod.Post))
+    {
+
+        <center>
+            <table>
+                <tr>
+                    <td style="margin-right:30px;"><strong>Name</strong></td>
+                    <td>@Html.TextBoxFor(model => model.Name, new { @class = "un form-control outlined-textbox" }) </td>
+                    <td><strong>Date of Birth</strong></td>
+                    <td> @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "un form-control outlined-textbox" } })</td>
+                </tr>
+                <tr>
+                    <td colspan="2"> @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</td>
+                    <td colspan="2">@Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Gender</strong></td>
+                    <td style="padding-left:70px;">@Html.RadioButtonFor(m => m.Gender, "Male") Male  &nbsp;&nbsp; @Html.RadioButtonFor(m => m.Gender, "Female") Female</td>
+                    <td><strong>Phone Number</strong></td>
+                    <td>@Html.TextBoxFor(model => model.Phone, new { @class = "un form-control outlined-textbox" })</td>
+                </tr>
+                <tr>
+                    <td colspan="2">@Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })</td>
+                    <td colspan="2">@Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })</td>
+                </tr>
+                <tr>
+                    <td><strong>Address</strong></td>
+                    <td colspan="4">
+                        @Html.TextAreaFor(model => model.Address, new { @class = "add form-control outlined-textbox" })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="4" align="center">@Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })</td>
+
+                </tr>
+                <tr>
+                    <td><strong>Email Address</strong></td>
+                    <td> @Html.TextBoxFor(model => model.Email, new { @class = "un form-control outlined-textbox" })</td>
+                    <td><strong>Password</strong></td>
+                    <td>
+                        <div style="position: relative;">
+                            @Html.PasswordFor(model => model.Password, new { @class = "pass form-control", id = "Password" })
+                            <i id="showPasswordIcon" class="show-password" style="position: absolute; right: 10px; top: 50%; cursor: pointer; transform: translateY(-50%);">👁️‍🗨️</i>
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">  @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</td>
+                    <td colspan="2">@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })</td>
+                </tr>
+
+            </table>
+            <div class="form-group">
+                <button type="submit" class="submit">Sign Up</button>
+            </div>
+
+            <div class="forgot">
+                @Html.ActionLink("Click here to Login", "PatientLogin", null, new { @class = "form-class" })
+            </div>
+        </center>
+    }
+</div>
+
+
+
+
+<!--<center>
+    <table>
+        <tr>
+            <td style="margin-right:30px;"><strong>Name</strong></td>
+            <td>
+                @Html.TextBoxFor(model => model.Name, new { @class = "un form-control outlined-textbox" })
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"> @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</td>
+    </tr>
+
+    <tr>
+        <td><strong>Date of Birth</strong></td>
+        <td> @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "un form-control outlined-textbox" } })</td>
+    </tr>
+    <tr>
+        <td colspan="2">@Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr>
+        <td><strong>Gender</strong></td>
+        <td style="padding-left:40px;">
+            @Html.RadioButtonFor(m => m.Gender, "Male") Male  &nbsp;&nbsp; @Html.RadioButtonFor(m => m.Gender, "Female") Female
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">@Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })</td>
+    </tr>
+
+    <tr>
+        <td><strong>Phone Number</strong></td>
+        <td>  @Html.TextBoxFor(model => model.Phone, new { @class = "un form-control outlined-textbox" })</td>
+    </tr>
+    <tr>
+        <td colspan="2">@Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr>
+        <td><strong>Address</strong></td>
+        <td>
+            @Html.TextAreaFor(model => model.Address, new { @class = "add form-control outlined-textbox" })
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"> @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr>
+        <td><strong>Email Address</strong></td>
+        <td>  @Html.TextBoxFor(model => model.Email, new { @class = "un form-control outlined-textbox" })</td>
+    </tr>
+    <tr>
+        <td colspan="2">  @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</td>
+    </tr>
+    <tr>
+        <td><strong>Password</strong></td>
+        <td>  @Html.PasswordFor(model => model.Password, new { @class = "pass form-control outlined-textbox" })</td>
+    </tr>
+    <tr>
+        <td colspan="2">@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })</td>
+    </tr>
+
+</table>
+<div class="form-group">
+    <button type="submit" class="submit">Sign Up</button>
+</div>
+
+<div class="forgot">
+    @Html.ActionLink("Click here to Login", "PatientLogin", null, new { @class = "form-class" })
+</div>-->
+@*</center>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="un">
+        @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Name, new { @class = "un form-control outlined-textbox", placeholder = "Enter your name" })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="un">
+        @Html.LabelFor(model => model.DOB, new { @class = "control-label" })
+       @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "un form-control outlined-textbox" } })
+         @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="un">
+        @Html.LabelFor(model => model.Gender, new { @class = "control-label" })<br />
+        <label>
+            @Html.RadioButtonFor(m => m.Gender, "Male") Male
+        </label>&nbsp;&nbsp;
+        <label>
+            @Html.RadioButtonFor(m => m.Gender, "Female") Female
+        </label>
+        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="un">
+        @Html.LabelFor(model => model.Phone, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Phone, new { @class = "un form-control outlined-textbox", placeholder = "Enter your phone number", id = "Phone" })
+        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="un">
+        @Html.LabelFor(model => model.Address, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Address, new { @class = "un form-control outlined-textbox", placeholder = "Enter your address" })
+        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="un">
+        @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Email, new { @class = "un form-control outlined-textbox", placeholder = "Enter your email", id = "Email" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="un">
+        @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+        @Html.PasswordFor(model => model.Password, new { @class = "pass form-control outlined-textbox", placeholder = "Enter your password", id = "Password" })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+    </div>*@

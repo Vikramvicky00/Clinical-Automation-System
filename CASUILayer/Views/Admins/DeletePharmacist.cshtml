@@ -1,0 +1,56 @@
+﻿@model DALLayer.Pharmacist
+
+@{
+    ViewBag.Title = "DeletePharmacist";
+    Layout = "~/Views/Shared/AdminsLayout/_AdminPharmacistLayout.cshtml";
+}
+
+<div class="container">
+    <h2 class="mt-4">Delete Pharmacist</h2>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h3 class="card-title">Are you sure you want to delete this pharmacist ?</h3>
+
+            <div class="mt-4">
+                <h4>Pharmacist Details</h4>
+                <hr />
+
+                <dl class="row">
+                    <dt class="col-sm-3">Name</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+
+                    <dt class="col-sm-3">Email</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+                    <dt class="col-sm-3">Password</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Password)</dd>
+
+                    <dt class="col-sm-3">Gender</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Gender)</dd>
+
+                    <dt class="col-sm-3">Date of Birth</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.DOB)</dd>
+
+                    <dt class="col-sm-3">Phone</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Phone)</dd>
+
+                    <dt class="col-sm-3">Address</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Address)</dd>
+
+                    
+                </dl>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group mt-4">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    <a href="@Url.Action("PharmacistList", "Admins")" class="btn btn-secondary ml-2">Cancel</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

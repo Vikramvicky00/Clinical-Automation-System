@@ -1,0 +1,164 @@
+﻿@model DALLayer.Doctor
+
+@{
+    ViewBag.Title = "AddDoctor";
+    Layout = "~/Views/Shared/AdminsLayout/_AdminDoctorLayout.cshtml";
+}
+
+<div class="container">
+    <h2 class="text-center">Add Doctor</h2>
+
+    @using (Html.BeginForm("AddDoctor","Admins",FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.DoctorName)
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model.DoctorName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DoctorName, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Email)
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Password)
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Gender)
+                                </td>
+                                <td>
+                                    <label>
+                                        @Html.RadioButtonFor(m => m.Gender, "Male") Male
+                                    </label>&nbsp;&nbsp;
+                                    <label>
+                                        @Html.RadioButtonFor(m => m.Gender, "Female") Female
+                                    </label>
+                                    <br />
+                                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.DOB)
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Phone)
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Address)
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.IsAvailable)
+                                </td>
+                                <td>
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.IsAvailable)
+                                        @Html.ValidationMessageFor(model => model.IsAvailable, "", new { @class = "text-danger" })
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.SpecializationId)
+                                </td>
+                                <td>
+                                    @Html.DropDownList("SpecializationId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SpecializationId, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Timings)
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(model => model.Timings, new SelectList(new List<Object>
+                                     {
+                                         new { Id = "9:30 AM  - 11:00 AM",Value="9:30 AM  - 11:00 AM" },
+                                         new { Id = "11:00 AM - 1:00 PM", Value="11:00 AM - 1:00 PM" },
+                                         new { Id = "02:00 PM - 4:00 PM", Value="02:00 PM - 4:00 PM" },
+                                         new { Id = "04:00 PM - 6:00 PM", Value="04:00 PM - 6:00 PM" }
+                                     }, "Id", "Value"), new { @class = "form-control" })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <center>
+            <div class="form-group mt-4">
+                <input type="submit" value="Create" class="btn btn-success" />
+                <a href="@Url.Action("DoctorList", "Admins")" class="btn btn-secondary ml-2">Cancel</a>
+            </div>
+        </center>
+    }
+</div>

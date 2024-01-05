@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            background-color: almond;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: white;
+            padding: 40px;
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 500px; /* Added for responsiveness */
+            width: 100%; /* Added for responsiveness */
+        }
+
+        legend {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block; /* Ensure labels are stacked */
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 40%; /* Modified for responsiveness */
+            padding: 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+  
+    @Scripts.Render("~/bundles/BackButtonDisable")
+</head>
+
+<body>
+    <form method="post">
+        <fieldset>
+            <legend>Reset Password</legend>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-control">
+                <label for="email">Enter Email</label>
+                <input type="text" id="email" name="email" required />
+            </div>
+            <div class="form-control">
+                <label for="pass1">Enter Password</label>
+                <div style="position: relative;">
+                    <input type="password" id="pass1" name="pass1" required />
+                    <i id="showPasswordIcon" class="show-password" style="position: absolute; right: 10px; top: 50%; cursor: pointer; transform: translateY(-50%);">👁️‍🗨️</i>
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="pass2">Enter Password again</label>
+                <div style="position: relative;">
+                    <input type="password" id="pass2" name="pass2" required />
+                    <i id="showPasswordIcon1" class="show-password1" style="position: absolute; right: 10px; top: 50%; cursor: pointer; transform: translateY(-50%);">👁️‍🗨️</i>
+                </div>
+            </div>
+
+            @using (Html.BeginForm("ResetPass", "Home", FormMethod.Post))
+            {
+                <button type="submit" class="btn btn-primary" name="SId" value="@Session["SId"]">Reset</button>
+            }
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button style="margin-left:45px;"onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-primary">Cancel</button>
+        </fieldset>
+    </form>
+ 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function (event) {
+                const email = document.getElementById('email');
+                const pass1 = document.getElementById('pass1');
+                const pass2 = document.getElementById('pass2');
+                let errors = [];
+
+                // Check if email is empty
+                if (!email.value.trim()) {
+                    errors.push('Email field is required.');
+                }
+
+                // Check if password 1 is empty
+                if (!pass1.value.trim()) {
+                    errors.push('Password field is required.');
+                }
+
+                // Check if password 2 is empty
+                if (!pass2.value.trim()) {
+                    errors.push('Confirm Password field is required.');
+                }
+
+                // Check if passwords match
+                if (pass1.value !== pass2.value) {
+                    errors.push('Passwords do not match!');
+                }
+
+                // Display errors if any
+                if (errors.length > 0) {
+                    event.preventDefault(); // Prevent form submission
+                    alert(errors.join('\n'));
+                }
+            });
+        });
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const passwordInput = document.getElementById("pass1");
+            const showPasswordIcon = document.getElementById("showPasswordIcon");
+
+            showPasswordIcon.addEventListener("click", function () {
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    showPasswordIcon.textContent = "👁️";
+                } else {
+                    passwordInput.type = "password";
+                    showPasswordIcon.textContent = "👁️‍🗨️";
+                }
+            });
+        });
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const passwordInput1 = document.getElementById("pass2");
+            const showPasswordIcon1 = document.getElementById("showPasswordIcon1");
+
+            showPasswordIcon1.addEventListener("click", function () {
+                if (passwordInput1.type === "password") {
+                    passwordInput1.type = "text";
+                    showPasswordIcon1.textContent = "👁️";
+                } else {
+                    passwordInput1.type = "password";
+                    showPasswordIcon1.textContent = "👁️‍🗨️";
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

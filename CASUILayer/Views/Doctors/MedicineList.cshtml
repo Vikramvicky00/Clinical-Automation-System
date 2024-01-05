@@ -1,0 +1,49 @@
+﻿`@model IEnumerable<DALLayer.Medicine>
+
+@{
+    ViewBag.Title = "MedicineList";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+}
+
+<h2>MedicineList</h2>
+<form method="post">
+    <fieldset>
+        <legend>View Medicines for Patient</legend>
+        <div class="form-group row">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Search Medicine</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Enter Medicine Name" id="MediName" name="MediName" aria-label="Medicine" aria-describedby="basic-addon1" required>
+                <div class="input-group-append">
+                    <button class="btn btn-success ml-1" type="submit" id="button-addon2">Search</button>
+                </div>
+                &nbsp;&nbsp;
+                <div class="input-group-append">
+                    <a class="btn btn-primary ml-1" href="" type="button" id="button-addon2">View All Medicine</a>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Medicine Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                 <tr>
+                    <td> @Html.DisplayFor(modelItem => item.MedicineName)</td>
+                    <td> Rs. @Html.DisplayFor(modelItem => item.Price)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Stock)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

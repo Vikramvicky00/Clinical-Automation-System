@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- Include necessary stylesheets and scripts -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300" rel="stylesheet">
+    @Styles.Render("~/Content/css/LayoutStyle")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/BackButtonDisable")
+    <style>
+        .navbar-custom {
+            background-color: black;
+        }
+
+            .navbar-custom .navbar-nav .nav-link {
+                color: white;
+            }
+    </style>
+</head>
+<body>
+
+
+
+    <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
+        <div class="container">
+            <div class="logo"><img src="~/Scripts/icons/clinicals.png" style="width:50px;height:50px"></div>
+            <h3 style=" margin-left:1.5em;margin-top:15px">Clinical Automation System</h3>
+            <!-- Button for mobile navigation -->
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navigation links moved to the main content area -->
+            </div>
+        </div>
+
+
+
+        <!-- Navigation links placed here -->
+        <ul class="nav">
+
+            <li class="nav-item">@Html.ActionLink("Logout", "LogOut", "Home", new { area = "" }, new { @class = "btn btn-danger" })</li>
+        </ul>
+
+        <!-- Add your main content here -->
+
+    </nav>
+    <div class="row mt-lg-5">
+        <div class="col-3">
+            <div class="main-container">
+                <nav class="main-menu">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("Index")">
+                                <img src="~/Scripts/icons/list.png" class="side_icon" />
+                                <span class="nav-text">
+                                    View Medicine
+                                </span>
+                            </a>
+                        </li>
+                        <!-- Add other menu items as needed -->
+                    </ul>
+
+
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("Create")">
+                                <img src="~/Scripts/icons/tablets.png" class="side_icon" />
+                                <span class="nav-text">
+                                    Add Medicine
+                                </span>
+                            </a>
+                        </li>
+                        <!-- Add other menu items as needed -->
+                    </ul>
+
+
+                    <ul>
+                        <li>
+
+                            <a href="@Url.Action("ProfileChange")">  <img src="~/Scripts/icons/edit.png" class="side_icon" />Edit Profile</a>
+                            </a>
+                        </li>
+                        <!-- Add other menu items as needed -->
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+        <div class="col-8 mt-lg-5">
+            @RenderBody()
+
+        </div>
+    </div>
+
+</body>
+
+</html>

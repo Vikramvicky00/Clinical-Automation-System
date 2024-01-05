@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "PatientList";
+    Layout = "~/Views/Shared/_AdminIndexLayout.cshtml";
+}
+
+@Styles.Render("~/Content/css/AdminIndexStyle")
+
+<section class="cards">
+    <article class="card card--1">
+        <div class="card__img">
+            <a href="@Url.Action("PatientList")" class="card_link">
+                <img class="card__img" src="~/Scripts/icons/pat.png" alt="Patients" />
+            </a>
+        </div>
+        <div class="card__info">
+            <h3 class="card__title" style="color: black" ;>
+
+                <a href="@Url.Action("PatientList")"style="color: black">Patients</a>
+
+            </h3>
+        </div>
+    </article>
+
+    <article class="card card--2">
+        <div class="card__img">
+            <a href="@Url.Action("DoctorList")" class="card_link">
+                <img class="card__img" src="~/Scripts/icons/doc1.png" alt="Doctor" />
+            </a>
+        </div>
+        <div class="card__info">
+            <h3 class="card__title">
+                <a href="@Url.Action("DoctorList")"style="color: black">Doctors</a>
+            </h3>
+        </div>
+    </article>
+
+    <article class="card card--3">
+        <div class="card__img">
+            <a href="@Url.Action("PharmacistList")" class="card_link">
+                <img class="card__img" src="~/Scripts/icons/phar.png" alt="Pharmacist" />
+            </a>
+        </div>
+        <div class="card__info">
+            <h3 class="card__title" style="color: black">
+
+                <a href="@Url.Action("PharmacistList")" style="color: black">Pharmacist</a>
+            </h3>
+        </div>
+    </article>
+
+    <article class="card card--4">
+        <div class="card__img">
+            <a href="@Url.Action("FrontExecutiveList")" class="card_link">
+                <img class="card__img" src="~/Scripts/icons/front.png" alt="Front Office Executive" />
+            </a>
+        </div>
+        <div class="card__info">
+            <h3 class="card__title">
+
+
+                <a href="@Url.Action("FrontExecutiveList")" style="color: black">Front Office Executive</a>
+            </h3>
+        </div>
+    </article>
+</section>
+
+
+
+
+@*
+
+
+
+    @Html.ActionLink("Doctor", "DoctorList", "Admins", new { area = "" }, new { @class = "nav-link" })
+    @Html.ActionLink("Pharmacist", "PharmacistList", "Admins", new { area = "" }, new { @class = "nav-link" })
+    @Html.ActionLink("Front Office Executive", "FrontExecutiveList", "Admins", new { area = "" }, new { @class = "nav-link" })
+
+
+
+
+*@

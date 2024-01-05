@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/BackButtonDisable")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+            .navbar-custom {
+                background-color: black;
+            }
+
+                .navbar-custom .navbar-nav .nav-link {
+                    color: white;
+                }
+            /*html,body {
+            margin: 0;
+            font-family: 'Titillium Web', sans-serif;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }*/
+
+            /*.main-container {
+            display: inline-block;
+            background-color: black;
+            height: 100%;
+            width:70%;
+        }*/
+            .navbar-custom {
+                background-color: black;
+            }
+
+                .navbar-custom .navbar-nav .nav-link {
+                    color: white;
+                }
+
+
+            .main-container {
+                display: flex;
+                font-size: large;
+            }
+
+            .main-menu {
+                background: #000000;
+                border-right: 1px solid #e5e5e5;
+                top: 71px;
+                position: fixed;
+                bottom: 0;
+                height: 100%;
+                width: 20%;
+                overflow: hidden;
+                transition: width 0.5s;
+            }
+
+            .logo {
+                width: 5px;
+                float: left;
+            }
+
+            .side_icon {
+                width: 50px;
+            }
+
+            .nav-item {
+                float: right;
+            }
+
+
+
+
+            h3 {
+                margin-left: 1.5em;
+                margin-top: 15px;
+                color: white;
+            }
+
+            col-8 mt-lg-5 {
+                margin-top: 5rem;
+            }
+
+            .main-menu li > a:hover {
+                background-color: #333; /* Change the background color on hover */
+                color: #fff; /* Change the text color on hover */
+            }
+
+            .main-menu.collapsed {
+                width: 60px;
+            }
+
+            .main-menu.expanded {
+                width: 250px;
+            }
+
+            .main-menu ul {
+                margin: 7px 0;
+                margin-left: 15px;
+                padding: 0;
+                list-style: none;
+                border-color: aliceblue;
+            }
+
+            .main-menu li > a {
+                position: relative;
+                display: block;
+                color: #999;
+                text-decoration: none;
+                transition: all 0.1s linear;
+                padding: 10px;
+            }
+
+            .main-menu .nav-icon {
+                font-size: 18px;
+            }
+
+            .main-menu .nav-text {
+                width: 190px;
+            }
+
+            .content {
+                margin-left: 60px;
+                padding: 20px;
+            }
+    </style>
+
+
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
+        <div class="container">
+            <div class="logo"><img src="~/Scripts/icons/clinicals.png" style="width:50px;height:50px"></div>
+            <h3 style=" margin-left:1.5em;margin-top:15px">Clinical Automation System</h3>
+            <!-- Button for mobile navigation -->
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navigation links moved to the main content area -->
+            </div>
+        </div>
+
+
+
+        <!-- Navigation links placed here -->
+        <ul class="nav">
+            <li class="nav-item">@Html.ActionLink("Logout", "LogOut", "Home", new { area = "" }, new { @class = "btn btn-danger" })</li>
+        </ul>
+
+        <!-- Add your main content here -->
+
+    </nav>
+    <div class="row mt-lg-5">
+        <div class="col-3">
+            <div class="main-container">
+                <nav class="main-menu">
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("AppointmentList")">
+                                <img src="~/Scripts/icons/list.png" class="side_icon" />
+                                <span class="nav-text">
+                                    View Appointment
+                                </span>
+                            </a>
+                        </li>
+                        <!-- Add other menu items as needed -->
+                    </ul>
+
+
+                    <ul>
+                        <li>
+                            <a href="@Url.Action("MessagePatient")">
+                                <img src="~/Scripts/icons/chat.png" class="side_icon" />
+                                <span class="nav-text">
+                                    Messages
+                                </span>
+                            </a>
+                        </li>
+                        <!-- Add other menu items as needed -->
+                    </ul>
+
+                    <ul>
+                        <li>
+
+                            <a href="@Url.Action("MedicineList")">  <img src="~/Scripts/icons/list.png" class="side_icon" />View Medicine</a>
+                            </a>
+                        </li>
+                        <!-- Add other menu items as needed -->
+                    </ul>
+                    <ul>
+                        <li>
+
+                            <a href="@Url.Action("ProfileChange")"> <img src="~/Scripts/icons/edit.png" class="side_icon" />Edit Profile</a>
+                            </a>
+                        </li>
+                        <!-- Add other menu items as needed -->
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+        <div class="col-8 mt-lg-5">
+            @RenderBody()
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ACA280B9-D843-4C7E-9FD8-D2186D3B9665}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CASUILayer</RootNamespace>
+    <AssemblyName>CASUILayer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44376</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.2\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Net.Http.Headers, Version=2.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.Headers.2.1.14\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\DoctorsController.cs" />
+    <Compile Include="Controllers\FrontOfficeExecutivesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PatientsController.cs" />
+    <Compile Include="Controllers\PharmacistsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Scripts\css\AdminIndexStyle.css" />
+    <Content Include="Scripts\css\LayoutStyle.css" />
+    <Content Include="Scripts\css\Message.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\BackButtonDisable.js" />
+    <Content Include="Scripts\Backgroundlogin\1.jpg" />
+    <Content Include="Scripts\Backgroundlogin\2.jpg" />
+    <Content Include="Scripts\Backgroundlogin\3.jpg" />
+    <Content Include="Scripts\Backgroundlogin\4.jpg" />
+    <Content Include="Scripts\Backgroundlogin\5.jpg" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\css\animate.min.css" />
+    <Content Include="Scripts\css\bootstrap-grid.css" />
+    <Content Include="Scripts\css\bootstrap-grid.min.css" />
+    <Content Include="Scripts\css\bootstrap-reboot.css" />
+    <Content Include="Scripts\css\bootstrap-reboot.min.css" />
+    <Content Include="Scripts\css\bootstrap.css" />
+    <Content Include="Scripts\css\bootstrap.min.css" />
+    <Content Include="Scripts\css\default-skin.css" />
+    <Content Include="Scripts\css\font-awesome.min.css" />
+    <Content Include="Scripts\css\icomoon.css" />
+    <Content Include="Scripts\css\jquery-ui.css" />
+    <Content Include="Scripts\css\jquery.fancybox.min.css" />
+    <Content Include="Scripts\css\jquery.mCustomScrollbar.min.css" />
+    <Content Include="Scripts\css\meanmenu.css" />
+    <Content Include="Scripts\css\nice-select.css" />
+    <Content Include="Scripts\css\normalize.css" />
+    <Content Include="Scripts\css\owl.carousel.min.css" />
+    <Content Include="Scripts\css\responsive.css" />
+    <Content Include="Scripts\css\slick.css" />
+    <Content Include="Scripts\css\style.css" />
+    <Content Include="Scripts\icons\add.png" />
+    <Content Include="Scripts\icons\back.png" />
+    <Content Include="Scripts\icons\book.png" />
+    <Content Include="Scripts\icons\chat.png" />
+    <Content Include="Scripts\icons\clinical-dark.png" />
+    <Content Include="Scripts\icons\clinical.png" />
+    <Content Include="Scripts\icons\clinicals.png" />
+    <Content Include="Scripts\icons\doc1.png" />
+    <Content Include="Scripts\icons\edit.png" />
+    <Content Include="Scripts\icons\front.png" />
+    <Content Include="Scripts\icons\icons8-admin-100.png" />
+    <Content Include="Scripts\icons\icons8-history-80.png" />
+    <Content Include="Scripts\icons\list.png" />
+    <Content Include="Scripts\icons\pat.png" />
+    <Content Include="Scripts\icons\phar.png" />
+    <Content Include="Scripts\icons\tablets.png" />
+    <Content Include="Scripts\images\.DS_Store" />
+    <Content Include="Scripts\images\bootstrap-grid.css.map" />
+    <Content Include="Scripts\images\bootstrap-grid.min.css.map" />
+    <Content Include="Scripts\images\bootstrap-reboot.css.map" />
+    <Content Include="Scripts\images\bootstrap-reboot.min.css.map" />
+    <Content Include="Scripts\images\bootstrap.css.map" />
+    <Content Include="Scripts\images\bootstrap.min.css.map" />
+    <Content Include="Scripts\css\.DS_Store" />
+    <Content Include="Scripts\css\bootstrap-grid.css.map" />
+    <Content Include="Scripts\css\bootstrap-grid.min.css.map" />
+    <Content Include="Scripts\css\bootstrap-reboot.css.map" />
+    <Content Include="Scripts\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Scripts\css\bootstrap.css.map" />
+    <Content Include="Scripts\css\bootstrap.min.css.map" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\icons\Admin1.jpg" />
+    <Content Include="Scripts\icons\Admin.jpg" />
+    <Content Include="Scripts\icons\doctor.png" />
+    <Content Include="Scripts\icons\office.png" />
+    <Content Include="Scripts\icons\pharmacist.png" />
+    <Content Include="Scripts\images\animate.min.css" />
+    <Content Include="Scripts\images\banner-bg.png" />
+    <Content Include="Scripts\images\bootstrap-grid.css" />
+    <Content Include="Scripts\images\bootstrap-grid.min.css" />
+    <Content Include="Scripts\images\bootstrap-reboot.css" />
+    <Content Include="Scripts\images\bootstrap-reboot.min.css" />
+    <Content Include="Scripts\images\bootstrap.css" />
+    <Content Include="Scripts\images\bootstrap.min.css" />
+    <Content Include="Scripts\images\call-icon.png" />
+    <Content Include="Scripts\images\client-img.png" />
+    <Content Include="Scripts\images\clinical.png" />
+    <Content Include="Scripts\images\contact-bg.png" />
+    <Content Include="Scripts\images\default-skin.css" />
+    <Content Include="Scripts\images\doctor.png" />
+    <Content Include="Scripts\images\family.png" />
+    <Content Include="Scripts\images\fb-icon.png" />
+    <Content Include="Scripts\images\font-awesome.min.css" />
+    <Content Include="Scripts\images\icomoon.css" />
+    <Content Include="Scripts\images\icon-2.png" />
+    <Content Include="Scripts\images\icon-3.png" />
+    <Content Include="Scripts\images\icon-4.png" />
+    <Content Include="Scripts\images\icon-5.png" />
+    <Content Include="Scripts\images\icon-6.png" />
+    <Content Include="Scripts\images\icon-7.png" />
+    <Content Include="Scripts\images\img-1.png" />
+    <Content Include="Scripts\images\img-2.png" />
+    <Content Include="Scripts\images\img-3.png" />
+    <Content Include="Scripts\images\instagram-icon.png" />
+    <Content Include="Scripts\images\jquery-ui.css" />
+    <Content Include="Scripts\images\jquery.fancybox.min.css" />
+    <Content Include="Scripts\images\jquery.mCustomScrollbar.min.css" />
+    <Content Include="Scripts\images\knowledge-bg.png" />
+    <Content Include="Scripts\images\linkedin-icon.png" />
+    <Content Include="Scripts\images\logo.png" />
+    <Content Include="Scripts\images\mail-icon.png" />
+    <Content Include="Scripts\images\map-icon.png" />
+    <Content Include="Scripts\images\meanmenu.css" />
+    <Content Include="Scripts\images\nice-select.css" />
+    <Content Include="Scripts\images\normalize.css" />
+    <Content Include="Scripts\images\owl.carousel.min.css" />
+    <Content Include="Scripts\images\quote-icon.png" />
+    <Content Include="Scripts\images\responsive.css" />
+    <Content Include="Scripts\images\right-arrow.png" />
+    <Content Include="Scripts\images\search-icon.png" />
+    <Content Include="Scripts\images\slick.css" />
+    <Content Include="Scripts\images\style.css" />
+    <Content Include="Scripts\images\twitter-icon.png" />
+    <Content Include="Scripts\images\Untitled-28.png" />
+    <Content Include="Scripts\img.jpg" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\bootstrap.bundle.js" />
+    <Content Include="Scripts\js\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\js\bootstrap.js" />
+    <Content Include="Scripts\js\bootstrap.min.js" />
+    <Content Include="Scripts\js\custom.js" />
+    <Content Include="Scripts\js\jquery-3.0.0.min.js" />
+    <Content Include="Scripts\js\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Scripts\js\jquery.min.js" />
+    <Content Include="Scripts\js\jquery.validate.js" />
+    <Content Include="Scripts\js\modernizer.js" />
+    <Content Include="Scripts\js\plugin.js" />
+    <Content Include="Scripts\js\popper.min.js" />
+    <Content Include="Scripts\js\slider-setting.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ShowPass.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Patients\Index.cshtml" />
+    <Content Include="Views\Pharmacists\Create.cshtml" />
+    <Content Include="Views\Pharmacists\Delete.cshtml" />
+    <Content Include="Views\Pharmacists\Edit.cshtml" />
+    <Content Include="Views\Pharmacists\Index.cshtml" />
+    <Content Include="Views\Home\AdminLogin.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admins\AddDoctor.cshtml" />
+    <Content Include="Views\Admins\AddPharmacist.cshtml" />
+    <Content Include="Views\Admins\AddFrontExecutive.cshtml" />
+    <Content Include="Views\Admins\PatientList.cshtml" />
+    <Content Include="Views\Doctors\MedicineList.cshtml" />
+    <Content Include="Views\Doctors\AppointmentList.cshtml" />
+    <Content Include="Views\Doctors\MessagePatient.cshtml" />
+    <Content Include="Views\Home\DoctorLogin.cshtml" />
+    <Content Include="Views\Admins\ProfileChange.cshtml" />
+    <Content Include="Views\Admins\Success.cshtml" />
+    <Content Include="Views\Doctors\ProfileChange.cshtml" />
+    <Content Include="Views\Shared\_DoctorLayout.cshtml" />
+    <Content Include="Views\Home\PatientLogin.cshtml" />
+    <Content Include="Views\Home\FrontOfficeLogin.cshtml" />
+    <Content Include="Views\Home\PharmacistsLogin.cshtml" />
+    <Content Include="Views\Home\PatientSignUp.cshtml" />
+    <Content Include="Views\Pharmacists\ProfileChange.cshtml" />
+    <Content Include="Views\Shared\_PatientLayout.cshtml" />
+    <Content Include="Views\Patients\ViewAppointments.cshtml" />
+    <Content Include="Views\Patients\MessageDoctor.cshtml" />
+    <Content Include="Views\Patients\ProfileChange.cshtml" />
+    <Content Include="Views\Shared\_PharmacistLayout.cshtml" />
+    <Content Include="Views\Shared\_FrontOfficeLayout.cshtml" />
+    <Content Include="Views\FrontOfficeExecutives\AddPatient.cshtml" />
+    <Content Include="Views\FrontOfficeExecutives\BookAppointment.cshtml" />
+    <Content Include="Views\FrontOfficeExecutives\ViewAppointment.cshtml" />
+    <Content Include="Views\FrontOfficeExecutives\ProfileChange.cshtml" />
+    <Content Include="Views\Patients\BookAppoint.cshtml" />
+    <Content Include="Views\Patients\ViewMedicine.cshtml" />
+    <Content Include="Views\Home\ResetPass.cshtml" />
+    <Content Include="Views\Admins\AdminIndex.cshtml" />
+    <Content Include="Scripts\js\.DS_Store" />
+    <Content Include="Scripts\js\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\js\bootstrap.js.map" />
+    <Content Include="Scripts\js\bootstrap.min.js.map" />
+    <Content Include="Views\Shared\_AdminIndexLayout.cshtml" />
+    <Content Include="Views\Admins\AddPatient.cshtml" />
+    <Content Include="Views\Admins\DeletePatient.cshtml" />
+    <Content Include="Views\Shared\AdminsLayout\_AdminDoctorLayout.cshtml" />
+    <Content Include="Views\Admins\DoctorList.cshtml" />
+    <Content Include="Views\Admins\DeleteDoctor.cshtml" />
+    <Content Include="Views\Shared\AdminsLayout\_AdminFrontOfficeLayout.cshtml" />
+    <Content Include="Views\Shared\AdminsLayout\_AdminPharmacistLayout.cshtml" />
+    <Content Include="Views\Admins\FrontExecutiveList.cshtml" />
+    <Content Include="Views\Admins\PharmacistList.cshtml" />
+    <Content Include="Views\Admins\DeletePharmacist.cshtml" />
+    <Content Include="Views\Admins\DeleteFO.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CASServiceLayer\CASServiceLayer.csproj">
+      <Project>{de6a7a2b-9748-47da-892d-6276ad3a4d2b}</Project>
+      <Name>CASServiceLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALLayer\DALLayer.csproj">
+      <Project>{0da077ea-18f4-4685-a91a-a5e526cd4758}</Project>
+      <Name>DALLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65081</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44376/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

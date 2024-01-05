@@ -1,0 +1,111 @@
+﻿/*html,body {
+    margin: 0;
+    font-family: 'Titillium Web', sans-serif;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}*/
+
+/*.main-container {
+    display: inline-block;
+    background-color: black;
+    height: 100%;
+    width:70%;
+}*/
+
+
+
+.navbar-custom {
+    background-color: black;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: white;
+}
+
+
+.main-container {
+    display: flex;
+    font-size: large;
+}
+
+.main-menu {
+    background: #000000;
+    border-right: 1px solid #e5e5e5;
+    top: 71px;
+    position: fixed;
+    bottom: 0;
+    height: 100%;
+    width: 20%;
+    overflow: hidden;
+    transition: width 0.5s;
+}
+
+.logo {
+    width: 5px;
+    float: left;
+}
+
+.side_icon {
+    width: 50px;
+}
+
+.nav-item {
+    float: right;
+}
+
+
+
+
+h3 {
+    margin-left: 1.5em;
+    margin-top: 15px;
+    color: white;
+}
+
+col-8 mt-lg-5 {
+    margin-top: 5rem;
+}
+
+.main-menu li > a:hover {
+    background-color: #333; /* Change the background color on hover */
+    color: #fff; /* Change the text color on hover */
+}
+
+.main-menu.collapsed {
+    width: 60px;
+}
+
+.main-menu.expanded {
+    width: 250px;
+}
+
+.main-menu ul {
+    margin: 7px 0;
+    margin-left: 15px;
+    padding: 0;
+    list-style: none;
+    border-color: aliceblue;
+}
+
+.main-menu li > a {
+    position: relative;
+    display: block;
+    color: #999;
+    text-decoration: none;
+    transition: all 0.1s linear;
+    padding: 10px;
+}
+
+.main-menu .nav-icon {
+    font-size: 18px;
+}
+
+.main-menu .nav-text {
+    width: 190px;
+}
+
+.content {
+    margin-left: 60px;
+    padding: 20px;
+}
+

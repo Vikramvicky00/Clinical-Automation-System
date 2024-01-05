@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/BackButtonDisable")
+
+    <style>
+
+        .navbar-custom .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-custom .nav {
+            margin-left: auto;
+        }
+
+        .navbar-custom .nav-item {
+            margin-left: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
+        <div class="container">
+            <div class="logo"><img src="~/Scripts/icons/clinicals.png" style="width:50px;height:50px"></div>
+            <h3>Clinical Automation System</h3>
+            <ul class="nav">
+                <li class="nav-item">@Html.ActionLink("Edit Profile", "ProfileChange", "Admins", new { area = "" }, new { @class = "btn btn-primary" })</li>
+                <li class="nav-item">@Html.ActionLink("Logout", "LogOut", "Home", new { area = "" }, new { @class = "btn btn-danger" })</li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        @Styles.Render("~/Content/css/AdminIndexStyle")
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-sm navbar-custom fixed-top">
+            <div class="container">
+                <div class="logo"><img src="~/Scripts/icons/clinicals.png" style="width:50px;height:50px"></div>
+                <h3>Clinical Automation System</h3>
+            </div>
+        </nav>
+
+        <div>
+         @RenderBody()
+        </div>
+    </body>
+    </html>
+
+    */
+
+
+
+*@

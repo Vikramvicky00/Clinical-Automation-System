@@ -1,0 +1,62 @@
+﻿@model DALLayer.Doctor
+
+@{
+    ViewBag.Title = "DeleteDoctor";
+    Layout = "~/Views/Shared/AdminsLayout/_AdminDoctorLayout.cshtml";
+}
+
+<div class="container">
+    <h2 class="mt-4">Delete Doctor</h2>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h3 class="card-title">Are you sure you want to delete this doctor?</h3>
+
+            <div class="mt-4">
+                <h4>Doctor Details</h4>
+                <hr />
+
+                <dl class="row">
+                    <dt class="col-sm-3">Doctor Name</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.DoctorName)</dd>
+
+                    <dt class="col-sm-3">Specialization</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Specialization.SpecializationName)</dd>
+
+                    <dt class="col-sm-3">Email</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+                    <dt class="col-sm-3">Password</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Password)</dd>
+
+                    <dt class="col-sm-3">Gender</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Gender)</dd>
+
+                    <dt class="col-sm-3">Date of Birth</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.DOB)</dd>
+
+                    <dt class="col-sm-3">Phone</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Phone)</dd>
+
+                    <dt class="col-sm-3">Address</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Address)</dd>
+
+                    <dt class="col-sm-3">Is Available</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.IsAvailable)</dd>
+
+                    <dt class="col-sm-3">Timings</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Timings)</dd>
+                </dl>
+            </div>
+
+            @using (Html.BeginForm()) {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group mt-4">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    <a href="@Url.Action("DoctorList", "Admins")" class="btn btn-secondary ml-2">Cancel</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
