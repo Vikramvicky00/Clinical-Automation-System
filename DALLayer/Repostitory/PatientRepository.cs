@@ -15,10 +15,10 @@ namespace DALLayer.Repostitory
 
         public IEnumerable<Patient> GetAllPatients()
         {
-            return _Db.Patients.ToList(); //used to get all data of patients;
+            return _Db.Patients.ToList(); 
         }
-                                 //int   b 
-                    //methodname  class object name
+                               
+                   
         public void InsertPatient(Patient patient)
         {
             _Db.Patients.Add(patient);
@@ -48,16 +48,16 @@ namespace DALLayer.Repostitory
         }
         public Patient FindPatientById(int id)
         {
-            return _Db.Patients.Find(id); // select * from patients where patientId=id;
+            return _Db.Patients.Find(id); 
         }
         public Patient FindPatientByEmail(string Email)
         {
-            return _Db.Patients.FirstOrDefault(pro => pro.Email == Email); //select * from patients where patientEmail=Email;
+            return _Db.Patients.FirstOrDefault(pro => pro.Email == Email); 
         }
               //datatype
         public IEnumerable<Patient> FindPatientWithName(string Name)
         {
             return _Db.Patients.Where(meds => meds.Name.ToLower().Contains(Name.ToLower()));
-        }   //select * from patients where lower(patientname)=lower(name);
+        }  
     }
 }

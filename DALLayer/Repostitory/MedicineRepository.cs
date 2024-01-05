@@ -59,9 +59,7 @@ namespace DALLayer.Repostitory
             _context.Entry(ad).State = EntityState.Modified;
             _context.SaveChanges();
         }
-        // You can implement additional methods here as needed, such as a method to calculate discounted price
-
-        // Example method to calculate discounted price
+       
         public float CalculateDiscountedPrice(float price, float tax)
         {
             float discount_amount = ((price * 10) / 100);

@@ -7,45 +7,46 @@ namespace CASUILayer.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ServiceOperations service; //service object define
+        private readonly ServiceOperations service; 
 
         public HomeController()
         {
-            service = new ServiceOperations();//object create
+            service = new ServiceOperations();
         }
 
         public ActionResult Index()//landing page
         {
-            return View();            //view is Html code
+            return View();          
         }
+  /*---------------------------------------------------------------------------------Admin--------------------------------------------------------------------*/
 
         public ActionResult AdminLogin()  
         {                                  
-            Session["SId"] = 1;            //Session id for admin =1, Sid is the variable name used to store the id
-            return View();                //Admin login page
+            Session["SId"] = 1;            
+            return View();               
         }
 
-        [HttpPost]//whenever we call the button in form it call the post method
+        [HttpPost]
         public ActionResult AdminLogin(Admin admin)
         {
             if (ModelState.IsValid)
             {
                 if (service.checkAdminLogin(admin)) //checks the admin details are vaild or not
                 {
-                    Admin ad = service.FindAdminByEmail(admin.EmailId);  //used to find the admin id details by using admin emailid
-                    Session["AdminObject"] = ad; // stores the admin object in session to used the data of the admin in the view,used in profile change
+                    Admin ad = service.FindAdminByEmail(admin.EmailId);  
+                    Session["AdminObject"] = ad; 
 
-                    return RedirectToAction("AdminIndex", "Admins");// return the views to the AdminIndex view of Admins controller 
+                    return RedirectToAction("AdminIndex", "Admins");
                 }
                 else
                 {
                     ModelState.AddModelError("", "InCorrect Email ID and Password");
-                    return View();    //Admin login
+                    return View();   
                 }
             }
             return View();
         }
-
+/*---------------------------------------------------------------------------------Doctor--------------------------------------------------------------------*/
         public ActionResult DoctorLogin()
         {
             Session["SId"] = 2;
@@ -71,6 +72,7 @@ namespace CASUILayer.Controllers
             }
             return View();
          }
+  /*------------------------------------------------------------------------------Patient--------------------------------------------------------------------*/
 
         public ActionResult PatientLogin()
         {
@@ -107,24 +109,21 @@ namespace CASUILayer.Controllers
         [HttpPost]
         public ActionResult PatientSignUp(Patient patient)
         {
-            //int age = DateTime.Now.Year - patient.DOB.Year;
-            //04<03--false 
+           
             if (DateTime.Now < patient.DOB)
             {
                 ModelState.AddModelError("DOB", "Please select a valid date of birth.");
                 return View();
             }
-            else if (ModelState.IsValid)
+
+            if (ModelState.IsValid)
             {
                service.InsertPatient(patient);
                return RedirectToAction("PatientLogin");
-             }
-             else
-              {
-                ModelState.AddModelError("", "InCorrect Email ID and Password");
-                 return View();
-              }
+            }
+            return View();
         }
+ /*----------------------------------------------------------------------------Front Office--------------------------------------------------------------------*/
 
         public ActionResult FrontOfficeLogin()
         {
@@ -152,6 +151,7 @@ namespace CASUILayer.Controllers
             }
             return View();
         }
+  /*-----------------------------------------------------------------------------Pharmacists--------------------------------------------------------------------*/
 
         public ActionResult PharmacistsLogin()
         {
@@ -179,13 +179,15 @@ namespace CASUILayer.Controllers
             }
             return View();
         }
+/*------------------------------------------------------------------------------Reset--------------------------------------------------------------------*/
 
         public ActionResult ResetPass()
         {
             return View();
         }
-
-        [HttpPost]//get the value from the resetform page,(email,pass1,pass2,session id of the specific login page)
+        
+          
+        [HttpPost]
         public ActionResult ResetPass(string email,string pass1,string pass2,int SId)
         {
             switch (SId) //go to specific case 
@@ -193,7 +195,7 @@ namespace CASUILayer.Controllers
                 case 1:
                     if (service.Checkpass(pass1, pass2)) //validate the 2 password are same using check pass method in service class
                     {
-                        Admin ad = service.FindAdminByEmail(email); //find the email id is found or not, if not found it returns null
+                        Admin ad = service.FindAdminByEmail(email); 
                         if (ad == null)
                         {
                             ModelState.AddModelError("", "Email id not found");
@@ -235,7 +237,8 @@ namespace CASUILayer.Controllers
                     }
                     break;
                 case 4:
-                   
+                    if (service.Checkpass(pass1, pass2))
+                    {
                         FrontOfficeExecutive Fo = service.FindFrontOfficeByEmail(email);
                         if (Fo == null)
                         {
@@ -245,6 +248,8 @@ namespace CASUILayer.Controllers
                         Fo.Password = pass1;
                         service.UpdateFrontOfficeExecutive(Fo);
                         return RedirectToAction("FrontOfficeLogin");
+                    }
+                    break;
                         
                 case 5:
                     if (service.Checkpass(pass1, pass2))
@@ -267,16 +272,10 @@ namespace CASUILayer.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
 
         public ActionResult LogOut() 
         {
-            Session.Clear();//clear the data which is present in the session.
+            Session.Clear();
             return RedirectToAction("Index","Home");
          }
     }

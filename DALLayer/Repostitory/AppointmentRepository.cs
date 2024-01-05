@@ -28,7 +28,7 @@ namespace DALLayer.Repostitory
             IEnumerable<Appointment> appointments = _context.Appointments.Include("Patient").
                 OrderBy(a => a.AppointmentId).Where(a => a.PatientId == id && a.IsApprove == true);
             return appointments;
-            //select * from appoinments where appoiments.patientid=id and appoints.IsApprove==True
+            
         }
 
         public IEnumerable<Appointment> SearchbyDoctorIdApproved(int id)

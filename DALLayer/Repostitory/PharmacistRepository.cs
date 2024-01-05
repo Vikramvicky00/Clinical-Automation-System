@@ -15,21 +15,21 @@ namespace DALLayer.Repostitory
 
         public  List<Pharmacist> GetAllPharmacists()
         {
-            return  _context.Pharmacists.ToList();//get all list
+            return  _context.Pharmacists.ToList();
         }
 
         public  Pharmacist GetPharmacistById(int pharmacistId)
         {
-            return  _context.Pharmacists.Find(pharmacistId); //find the pharmacist by his id
+            return  _context.Pharmacists.Find(pharmacistId); 
         }
         public Pharmacist FindPharmacistByEmail(string email)
         {
-            return _context.Pharmacists.FirstOrDefault(f=>f.Email == email);//find by email 
+            return _context.Pharmacists.FirstOrDefault(f=>f.Email == email);
         }
 
         public bool checkPharmistLogin(Pharmacist pharmacist)
         {
-            return _context.Pharmacists.Any(d => d.Email == pharmacist.Email && d.Password == pharmacist.Password);//for login
+            return _context.Pharmacists.Any(d => d.Email == pharmacist.Email && d.Password == pharmacist.Password);
         }
         public void AddPharmacist(Pharmacist pharmacist)
         {

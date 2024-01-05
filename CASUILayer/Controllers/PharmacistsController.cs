@@ -23,7 +23,7 @@ namespace CASUILayer.Controllers
             return View(service.GetAllMedicines());
         }
 
-        [HttpPost]//when we click on search button, these action will call
+        [HttpPost]
         public ActionResult Index(string MediName)
         {
 
@@ -96,7 +96,7 @@ namespace CASUILayer.Controllers
             return RedirectToAction("Index");//medicine list view 
         }
 
-        public ActionResult ProfileChange()
+        public ActionResult ProfileChange()//pharmacist profile
         {
             if (Session["SId"] == null)
             {

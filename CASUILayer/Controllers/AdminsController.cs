@@ -19,20 +19,21 @@ namespace CASUILayer.Controllers
     /*--------------------------------------------------------------ADMIN-----------------------------------------------------------------------------*/
         public ActionResult AdminIndex()// Admin Index/landing Page
         {
-            if (Session["SId"] == null) //need for Authencation,no one access through the url without login
+            if (Session["SId"] == null) 
             {
-                return RedirectToAction("AdminLogin", "Home");// 
+                return RedirectToAction("AdminLogin", "Home"); 
             }
             return View();
         }
+        //Admin Profile Change
         public ActionResult ProfileChange()
         {
             if (Session["SId"] == null)
             {
                 return RedirectToAction("AdminLogin", "Home");
             }
-            var obj = Session["AdminObject"] as Admin;  //stores the adminobject which is store in session ,while login into admin 
-            return View(obj);//returns the data of admin 
+            var obj = Session["AdminObject"] as Admin;  
+            return View(obj); 
         }
 
         [HttpPost]
@@ -42,10 +43,10 @@ namespace CASUILayer.Controllers
             {
                 return RedirectToAction("AdminLogin", "Home");
             }
-            if (ModelState.IsValid)//check the validation of the fields which are required
+            if (ModelState.IsValid)
             {
-               Service.UpdateAdmin(admin); //update the admin details 
-                return RedirectToAction("PatientList"); //redirects to patient list.
+               Service.UpdateAdmin(admin); 
+                return RedirectToAction("PatientList"); 
             }
             return View();
         }
@@ -61,7 +62,8 @@ namespace CASUILayer.Controllers
             return View(Service.GetAllPatients());
         }
 
-        public ActionResult AddPatient()//Adding Patients View
+        //Adding Patients View
+        public ActionResult AddPatient()
         {
             if (Session["SId"] == null)
             {
@@ -72,19 +74,11 @@ namespace CASUILayer.Controllers
 
         [HttpPost]
         public ActionResult AddPatient([Bind(Include = "PatientId,Name,Phone,Address,DOB,Gender,Email,Password")] Patient patient)
-        {
-           
-            //int age = DateTime.Now.Year - patient.DOB.Year;
-                                              
+        {                                            
             if (DateTime.Now < patient.DOB)
             {
                 ModelState.AddModelError("DOB", "Please select a valid date.");
             }
-            //else if (age < 18)
-            //{
-            //    ModelState.AddModelError("DOB", "You must be at least 18 years old to sign up.");
-            //    return View();
-            //}
             if (ModelState.IsValid)
             {
                 Service.InsertPatient(patient);
@@ -92,18 +86,18 @@ namespace CASUILayer.Controllers
             }
             return View();
         }
-        //this view is used for displaying the data 
+       
         public ActionResult DeletePatient(int id) //Delete patient view
         {
             if (Session["SId"] == null)
             {
                 return RedirectToAction("AdminLogin", "Home");
             }
-            Patient patient = Service.FindPatientById(id); //find the patient data of specific id , when we clicked on delete button ,it passes the value of
-            return View(patient);                           //passing the patient data to the view page(.cshtml)
+            Patient patient = Service.FindPatientById(id); 
+            return View(patient);                         
         }
 
-        [HttpPost, ActionName("DeletePatient")]  //whenever we click on delte button in delete patient view page, it automatically calls this Action.
+        [HttpPost, ActionName("DeletePatient")]  //Delete post action
         public ActionResult DeletePat(int id)
         {
             Service.DeletePatient(id);
@@ -111,9 +105,7 @@ namespace CASUILayer.Controllers
         }
 
 /*--------------------------------------------------------------------Doctor------------------------------------------------------------------------*/
-    
-
-        public ActionResult AddDoctor()
+        public ActionResult AddDoctor()//Add Doctor
         {
             if (Session["SId"] == null)
             {
@@ -134,6 +126,8 @@ namespace CASUILayer.Controllers
             ViewBag.SpecializationId = new SelectList(db.Specializations, "SpecializationId", "SpecializationName", doctor.SpecializationId);
             return View(doctor);
         }
+
+        //Doctor List
         public ActionResult DoctorList()
         {
             if (Session["SId"] == null)
@@ -142,6 +136,8 @@ namespace CASUILayer.Controllers
             }
             return View(Service.GetAllDoctors());
         }
+
+        //Delete Doctor
         public ActionResult DeleteDoctor(int id)
         {
             if (Session["SId"] == null)
@@ -151,7 +147,7 @@ namespace CASUILayer.Controllers
             Doctor doctor = Service.GetDoctorById(id);  
             return View(doctor);
         }
-
+        //Delete Action
         [HttpPost, ActionName("DeleteDoctor")]
         public ActionResult DeleteDoc(int id)
         {
@@ -159,6 +155,7 @@ namespace CASUILayer.Controllers
             return RedirectToAction("DoctorList");
         }
  /*----------------------------------------------------------------------Pharmacist---------------------------------------------------------------------*/
+        //Add Pharmacist
         public ActionResult AddPharmacist()
         {
             return View();
@@ -175,10 +172,12 @@ namespace CASUILayer.Controllers
             return View();
         }
 
+        //list of Pharmacist
         public ActionResult PharmacistList()
         {
             return View(Service.GetAllPharmacists());
         }
+        //Delete Pharmacist
         public ActionResult DeletePharmacist(int id)
         {
             Pharmacist ph = Service.GetPharmacistById(id);
@@ -193,7 +192,7 @@ namespace CASUILayer.Controllers
         }
 
   /*---------------------------------------------------------------------Front Office Executive-----------------------------------------------------------*/
-     
+        //Add Front Executive
         public ActionResult AddFrontExecutive()
         {
             return View();
@@ -210,12 +209,13 @@ namespace CASUILayer.Controllers
 
             return View();
         }
-
+        
+        //FrontExecutive List
         public ActionResult FrontExecutiveList()
         {
             return View(Service.GetAllFrontOfficeExecutives());
         }
-
+        //Delete Fo
         public ActionResult DeleteFO(int id)
         {
            FrontOfficeExecutive FO=Service.GetFrontOfficeExecutiveById(id);

@@ -30,7 +30,7 @@ namespace DALLayer.Repostitory
 
 
         public Doctor FindDoctorByEmail(string mail)
-        {                                               //converting Uppercase to LowerCase of mail
+        {                                             
             return _context.Doctors.FirstOrDefault(m => m.Email.ToLower() == mail.ToLower());
         }
 
@@ -53,7 +53,7 @@ namespace DALLayer.Repostitory
 
         public void DeleteDoctor(int doctorId)
         {
-            var doctor = _context.Doctors.Find(doctorId);  //first find the doctor by Id, if it found ,
+            var doctor = _context.Doctors.Find(doctorId);  
             if (doctor != null)
             {
                 _context.Doctors.Remove(doctor);

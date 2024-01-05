@@ -8,7 +8,7 @@ namespace CASUILayer.Controllers
 {
     public class PatientsController : Controller
     {
-        //private ClinicalDbContext db = new ClinicalDbContext();
+        
         private readonly ServiceOperations service;
         
         public PatientsController()
@@ -16,7 +16,7 @@ namespace CASUILayer.Controllers
             service=new ServiceOperations();
         }
        
-        // GET: Patients
+        // landing page
         public ActionResult Index()
         {
             if (Session["SId"] == null)
@@ -26,13 +26,10 @@ namespace CASUILayer.Controllers
             return View(service.GetAllDoctors());
         }
        
-        public ActionResult BookAppoint(int id)
+        public ActionResult BookAppoint(int id)//book Appointment
         { 
             Doctor d = service.GetDoctorById(id);
-            //TempData["DoctorName"] = d.DoctorName;
-            //TempData["Timings"] = d.Timings;
-            //TempData["SpecializationName"] = d.Specialization.SpecializationName;
-            //TempData["DocId"] = id;
+           
             Session["DoctorName"] = d.DoctorName;
             Session["Timings"] = d.Timings;
             Session["SpecializationName"] = d.Specialization.SpecializationName;
@@ -68,7 +65,7 @@ namespace CASUILayer.Controllers
                 return View();
             }
         }
-        public ActionResult ViewAppointments()
+        public ActionResult ViewAppointments()//list of appointments
         {
             if (Session["SId"] == null)
             {
@@ -79,7 +76,7 @@ namespace CASUILayer.Controllers
             return View(appointment);
         }
 
-        public ActionResult MessageDoctor()
+        public ActionResult MessageDoctor()// message ui 
         {
             if (Session["SId"] == null)
             {
@@ -90,8 +87,7 @@ namespace CASUILayer.Controllers
             var appointments = service.SearchbyPatientIdApproved(obj.PatientId);
             
             ViewBag.Appointments = appointments;
-            Session["PatientId"]=obj.PatientId;
-            //TempData["MsgLimit"]=obj.MsgLimit;
+            Session["PatientId"] = obj.PatientId;
             TempData["id"]  =obj.PatientId;
             
             return View();
@@ -111,10 +107,6 @@ namespace CASUILayer.Controllers
                 return View(messages);
             
         }
-
-
-      
-
 
         [HttpPost]
         public ActionResult AddMessage(int id, string txtMessage)
@@ -140,10 +132,9 @@ namespace CASUILayer.Controllers
             {
                 ModelState.AddModelError("", "Limit Exceeded");
 
-                // Retrieve necessary data for the view
+                
                 IEnumerable<Message> messages = service.GetBySenderIdAndRecieverId(obj.PatientId, id);
 
-                // Pass the error message and data to the view
                 TempData["ErrorMessage"] = "Message limit exceeded. You cannot ask more than 2 Queries.";
                 TempData["Messages"] = messages;
 
@@ -151,7 +142,7 @@ namespace CASUILayer.Controllers
             }
         } 
 
-
+        //patient profile change
         public ActionResult ProfileChange()
         {
             if (Session["SId"] == null)
@@ -173,7 +164,7 @@ namespace CASUILayer.Controllers
             return View();
         }
 
-
+        //list of medicine
         public ActionResult ViewMedicine()
         {
             if (Session["SId"] == null)
@@ -194,11 +185,6 @@ namespace CASUILayer.Controllers
             IEnumerable<Medicine> result = service.FindMedicineByName(MediName);
             return View(result);
         }
-
-
-
-
-
 
     }
 }

@@ -15,7 +15,8 @@ namespace CASUILayer.Controllers
         {
             service = new ServiceOperations();
         }
-
+         
+        //Get Medicine List view
         public ActionResult MedicineList()
         {
             if (Session["SId"] == null)
@@ -24,7 +25,7 @@ namespace CASUILayer.Controllers
             }
             return View(service.GetAllMedicines()); 
         }
-
+       
         [HttpPost]
         public ActionResult MedicineList(string MediName)
         {
@@ -36,7 +37,7 @@ namespace CASUILayer.Controllers
             return View(medicine);
         }
 
-
+        //Appointment List View 
         public ActionResult AppointmentList()
         {
             if (Session["SId"] == null)
@@ -48,30 +49,30 @@ namespace CASUILayer.Controllers
             return View(appointments);
         }
 
+        //Message page UI view
         public ActionResult MessagePatient() 
         {
             if (Session["SId"] == null)
             {
                 return RedirectToAction("DoctorLogin", "Home");
             }
-            var obj = Session["DocObject"] as Doctor;// we used the doctor data which was stored in session during Login 
-            Session["DoctorId"] = obj.DoctorId;   //we store the doctor id to the session
+            var obj = Session["DocObject"] as Doctor; 
+            Session["DoctorId"] = obj.DoctorId;      
             var appointments = service.SearchbyDoctorIdApproved(obj.DoctorId);  
-            // we are retriving the approved appoinments which are booked for specific doctor.
-            ViewBag.Appointments = appointments; //we are storing all the approved appoinments for patients in ViewBag to display in the view
-            return View();//return Message page UI view 
+            ViewBag.Appointments = appointments; 
+            return View(); 
         }
 
         [HttpPost]
         public ActionResult MessagePatient(int id)
         {
-            var obj = Session["DocObject"] as Doctor;// we used the doctor data which was stored in session during login
-            Patient patient=service.FindPatientById(id);//we find the patient data by using patient id and stores in patient object
-            Session["PatientId"] = patient.PatientId;//storing patientid in session
-            Session["Pname"] = patient.Name;//storing patient name               //sender      //recevier
+            var obj = Session["DocObject"] as Doctor;
+            Patient patient=service.FindPatientById(id);
+            Session["PatientId"] = patient.PatientId;
+            Session["Pname"] = patient.Name;               
             IEnumerable<Message> messages = service.GetBySenderIdAndRecieverId(obj.DoctorId, patient.PatientId);
-            var appointments = service.SearchbyDoctorIdApproved(obj.DoctorId); // we are retriving the approved appoinments which are booked for specific doctor.
-            ViewBag.Appointments = appointments;//we are storing all the approved appoinments for patients in ViewBag to display in the view
+            var appointments = service.SearchbyDoctorIdApproved(obj.DoctorId); 
+            ViewBag.Appointments = appointments;
             return View(messages);
         }
 
@@ -88,7 +89,7 @@ namespace CASUILayer.Controllers
             return RedirectToAction("MessagePatient", message.ReceiverId);
         }
 
-
+        //Profile Change View 
         public ActionResult ProfileChange()
         {
             if (Session["SId"] == null)
@@ -99,6 +100,7 @@ namespace CASUILayer.Controllers
             ViewBag.SpecializationId = new SelectList(db.Specializations, "SpecializationId", "SpecializationName", obj.SpecializationId);
             return View(obj);
         }
+
         [HttpPost]
         public ActionResult ProfileChange([Bind(Include = "DoctorId,DoctorName,Email,Password,Gender,DOB,Phone,Address,IsAvailable,SpecializationId,Timings")] Doctor doctor)
         {

@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;//contains the attributes
-using System.ComponentModel.DataAnnotations.Schema;//contains the database 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DALLayer
 {
@@ -9,19 +9,20 @@ namespace DALLayer
     {
         [Key] //primary key
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]//Unique(Automatic numbering from 1 so on) 
-        [Required(ErrorMessage = "Specialization  is required")] //propertry must be filled into database.otherwise shows errors message
+        [Required(ErrorMessage = "Specialization  is required")] 
         public int SpecializationId { get; set; }
 
         [Required(ErrorMessage = "Specilaization  is required")]
-        [StringLength(15, ErrorMessage = "The field must be between 15 characters.")]//is used to define the length of the property
+        [StringLength(15, ErrorMessage = "The field must be between 15 characters.")]
         public string SpecializationName { get; set; }
     }
+
     //Admin Class
     public class Admin
     {
         [Key]
         [Required(ErrorMessage = "Please Enter Email address")]
-        [EmailAddress(ErrorMessage = "Invalid email address")]//it is the inbult email attribute used to check the email validations
+        [EmailAddress(ErrorMessage = "Invalid email address")]
         public string EmailId { get; set; }
 
         [Required(ErrorMessage = "Please Enter Password")]
@@ -49,7 +50,7 @@ namespace DALLayer
         public string Address { get; set; }
        
         [Required(ErrorMessage = "Please select Date of Birth")]
-        [DataType(DataType.Date)]//for display the field as calender
+        [DataType(DataType.Date)]
         public DateTime DOB { get; set; }
 
         [Required(ErrorMessage = "Please select Gender")]
@@ -64,7 +65,7 @@ namespace DALLayer
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$", ErrorMessage = "Password must meet the specified criteria.")]
         public string Password { get; set; }
     }
-    //Doctor Class , has relation with Specialization table ,thats why we add specialization id in doctor table,i.e one Specialization has many doctors
+  
     public class Doctor
     {
         [Key]
@@ -89,7 +90,7 @@ namespace DALLayer
 
         [Required(ErrorMessage = "Please select Date of Birth")]
         [DataType(DataType.Date)] //from      //To      
-        [Range(typeof(DateTime), "1/1/1900", "1/1/1997", ErrorMessage = "Date of birth should be greater than 25 years")]
+        [Range(typeof(DateTime), "1/1/1960", "31/12/1997", ErrorMessage = "Date of birth should be greater than 25 years")]
         public DateTime DOB { get; set; }
 
         [Required(ErrorMessage = "Please Enter Phone Number")]
@@ -111,8 +112,8 @@ namespace DALLayer
         [StringLength(20)]
         public string Timings { get; set; }
 
-        [ForeignKey("SpecializationId")] //has relation with Specialization table ,thats why we add specialization id in doctor table,i.e one Specialization has many doctors
-        public virtual Specialization Specialization { get; set; } //is used to override the properties which is present in the Specialization Class(Base Class)
+        [ForeignKey("SpecializationId")] 
+        public virtual Specialization Specialization { get; set; } 
     }
     //Pharmacist class
     public class Pharmacist
@@ -139,8 +140,8 @@ namespace DALLayer
         public string Gender { get; set; }
 
         [Required(ErrorMessage = "Please select Date of Birth")]
-        [DataType(DataType.Date)] //from       //to
-        [Range(typeof(DateTime), "1/1/1900", "1/1/2004", ErrorMessage = "Date of birth should be greater than 18 years")]
+        [DataType(DataType.Date)] 
+        [Range(typeof(DateTime), "1/1/1970", "1/1/2004", ErrorMessage = "Date of birth should be greater than 18 years")]
         public DateTime DOB { get; set; }
 
         [Required(ErrorMessage = "Please Enter Phone Number")]
@@ -174,7 +175,7 @@ namespace DALLayer
 
         [Required(ErrorMessage = "Please select Date of Birth")]
         [DataType(DataType.Date)]
-        [Range(typeof(DateTime), "1/1/1900", "1/1/2004", ErrorMessage = "Date of birth should be greater than 18 years")]
+        [Range(typeof(DateTime), "1/1/1970", "1/1/2004", ErrorMessage = "Date of birth should be greater than 18 years")]
         public DateTime DOB { get; set; }
 
         [Required(ErrorMessage = "Please Enter Phone Number")]

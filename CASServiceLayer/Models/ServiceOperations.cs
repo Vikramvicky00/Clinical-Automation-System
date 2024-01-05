@@ -30,18 +30,37 @@ namespace CASServiceLayer.Models
             return _doctor.GetAllDoctors();
         }
 
-        public bool Checkpass(string p1,string p2)//logic for pass
+        public Doctor FindDoctorByEmail(string mail)//name FindDoctorByEmail()
         {
-            if (p1 == p2)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return _doctor.FindDoctorByEmail(mail);
         }
-        //Login check-----------------------------
+        public Doctor GetDoctorById(int doctorId)
+        {
+            return _doctor.GetDoctorById(doctorId);
+        }
+        public void UpdateAdmin(Admin admin)
+        {
+            _medicine.UpdateAdmin(admin);
+        }
+        public void AddDoctor(Doctor doctor)
+        {
+            _doctor.AddDoctor(doctor);
+        }
+        public void UpdateDoctor(Doctor doctor)
+        {
+            _doctor.UpdateDoctor(doctor);
+
+        }
+        public void DeleteDoctor(int doctorId)
+        {
+            _doctor.DeleteDoctor(doctorId);
+
+        }
+        public bool DoctorExists(int doctorId)
+        {
+            return _doctor.DoctorExists(doctorId);
+        }
+       /*-------------------------------------------------------Login Check Methods-----------------------------------------------------------------------------*/
         public bool checkAdminLogin(Admin admin)
         {
             return _medicine.checkAdminLogin(admin);
@@ -63,41 +82,21 @@ namespace CASServiceLayer.Models
         {
             return _pharmacist.checkPharmistLogin(pharmacist);
         }
-        //-------------------------------
-        ///
-        public Doctor FindDoctorByEmail(string mail)//name FindDoctorByEmail()
-        {
-            return _doctor.FindDoctorByEmail(mail);
-        }
-        public Doctor GetDoctorById(int doctorId)
-        {
-            return _doctor.GetDoctorById(doctorId);
-        }
-        public void UpdateAdmin(Admin admin)
-        {
-           _medicine.UpdateAdmin(admin);
-        }
-        public void AddDoctor(Doctor doctor)
-        {
-            _doctor.AddDoctor(doctor);
-        }
-        public void UpdateDoctor(Doctor doctor)
-        {
-            _doctor.UpdateDoctor(doctor);
-          
-        }
-        public void DeleteDoctor(int doctorId)
-        {
-           _doctor.DeleteDoctor(doctorId);
-            
-        }
-        public bool DoctorExists(int doctorId)
-        {
-            return _doctor.DoctorExists(doctorId);
-        }
 
+        public bool Checkpass(string p1, string p2)//logic for pass
+        {
+            if (p1 == p2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
         /* Patients Methods */
-     
+
         public IEnumerable<Patient> GetAllPatients()
         {
             return _patient.GetAllPatients();
@@ -126,7 +125,7 @@ namespace CASServiceLayer.Models
         {
             return _patient.FindPatientByEmail(Email);
         }
-        
+        /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
         /* Front Office Executive Methods */
         public List<FrontOfficeExecutive> GetAllFrontOfficeExecutives()
         {
@@ -159,7 +158,7 @@ namespace CASServiceLayer.Models
         {
             return _frontOffice.FrontOfficeExecutiveExists(frontOfficeExecutiveId);
         }
-
+      /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
         /* Pharmacist Methods */
         public List<Pharmacist> GetAllPharmacists()
         {
@@ -177,7 +176,6 @@ namespace CASServiceLayer.Models
         {
             return _pharmacist.FindPharmacistByEmail(email);
         }
-
         public void UpdatePharmacist(Pharmacist pharmacist)
         {
            _pharmacist.UpdatePharmacist(pharmacist) ;
@@ -190,7 +188,7 @@ namespace CASServiceLayer.Models
         {
             return _pharmacist.PharmacistExists(pharmacistId); 
         }
-
+        /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
         /* Medicine Methods */
         public List<Medicine> GetAllMedicines()
         {
@@ -215,8 +213,6 @@ namespace CASServiceLayer.Models
         }
 
 
-
-
         public Admin FindAdminByEmail(string mail)
         {
             return _medicine.FindAdminByEmail(mail);
@@ -230,6 +226,7 @@ namespace CASServiceLayer.Models
         {
             return _medicine.CalculateDiscountedPrice(price,tax);
         }
+    /*------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
         /* Message Methods */
         public Message GetMessageById(int messageId)

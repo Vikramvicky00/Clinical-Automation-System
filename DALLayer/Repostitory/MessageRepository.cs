@@ -30,12 +30,9 @@ namespace DALLayer.Repostitory
         }
         public IEnumerable<Message> GetBySenderIdAndRecieverId(int SenderId, int RecieverId)
         {
-            IEnumerable<Message> messages = _context.Messages.
-                OrderBy(mess => mess.MessageTime).
-                                   //from doctor to patient                                   //from patient to doctor
-                Where(mess => (mess.ReceiverId == RecieverId && mess.SenderId == SenderId) || (mess.ReceiverId == SenderId && mess.SenderId == RecieverId));
+            IEnumerable<Message> messages = _context.Messages.OrderBy(mess => mess.MessageTime).Where(mess => (mess.ReceiverId == RecieverId && mess.SenderId == SenderId) || (mess.ReceiverId == SenderId && mess.SenderId == RecieverId));
             return messages;
-        }  //select * from messages where senderid=SenderId and reciverid=RecieverId
+        }  
         public void AddMessage(Message message)
         {
             _context.Messages.Add(message);

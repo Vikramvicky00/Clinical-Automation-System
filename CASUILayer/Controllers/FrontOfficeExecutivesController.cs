@@ -33,13 +33,13 @@ namespace CASUILayer.Controllers
             if (ModelState.IsValid)
             {
                 service.InsertPatient(patient);
-                return RedirectToAction("BookAppointment");//
+                return RedirectToAction("BookAppointment");
             }
             return View();
         }
 
 
-        public ActionResult BookAppointment()
+        public ActionResult BookAppointment()//Book_Appointment 
         {
             if (Session["SId"] == null)
             {
@@ -68,7 +68,7 @@ namespace CASUILayer.Controllers
 
 
 
-        public ActionResult ViewAppointment()
+        public ActionResult ViewAppointment()//View_Appointments
         {
             if (Session["SId"] == null)
             {
@@ -86,7 +86,7 @@ namespace CASUILayer.Controllers
         }
 
         [HttpPost]
-        public ActionResult ApproveAppoint(int id)
+        public ActionResult ApproveAppoint(int id)//Post Action for Approve Appointments
         {
             Appointment appointment = service.GetAppointmentById(id);
             appointment.IsApprove = true;
@@ -95,7 +95,7 @@ namespace CASUILayer.Controllers
             return RedirectToAction("ViewAppointment");
         }
         [HttpPost]
-        public ActionResult RejectAppoint(int id)
+        public ActionResult RejectAppoint(int id) //Post Action for Reject Approvement
         {
             Appointment appointment = service.GetAppointmentById(id);
             appointment.IsApprove = false;
@@ -104,7 +104,7 @@ namespace CASUILayer.Controllers
             return RedirectToAction("ViewAppointment");
         }
 
-        public ActionResult ProfileChange()
+        public ActionResult ProfileChange()  //Front Office Executives
         {
             if (Session["SId"] == null)
             {
