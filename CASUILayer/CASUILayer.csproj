@@ -176,7 +176,6 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Scripts\css\AdminIndexStyle.css" />
     <Content Include="Scripts\css\LayoutStyle.css" />
-    <Content Include="Scripts\css\Message.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -205,12 +204,6 @@
     <Content Include="Scripts\css\jquery-ui.css" />
     <Content Include="Scripts\css\jquery.fancybox.min.css" />
     <Content Include="Scripts\css\jquery.mCustomScrollbar.min.css" />
-    <Content Include="Scripts\css\meanmenu.css" />
-    <Content Include="Scripts\css\nice-select.css" />
-    <Content Include="Scripts\css\normalize.css" />
-    <Content Include="Scripts\css\owl.carousel.min.css" />
-    <Content Include="Scripts\css\responsive.css" />
-    <Content Include="Scripts\css\slick.css" />
     <Content Include="Scripts\css\style.css" />
     <Content Include="Scripts\icons\add.png" />
     <Content Include="Scripts\icons\back.png" />
