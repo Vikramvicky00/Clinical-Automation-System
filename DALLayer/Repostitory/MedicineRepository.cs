@@ -44,6 +44,7 @@ namespace DALLayer.Repostitory
             _context.Medicines.Remove(medicine);
             _context.SaveChanges();
         }
+
         public Admin FindAdminByEmail(string email)
         {
             return _context.Admins.FirstOrDefault(m => m.EmailId.ToLower() == email.ToLower());
@@ -66,5 +67,8 @@ namespace DALLayer.Repostitory
             tax=price * tax/100;
             return ((price + tax) - discount_amount);
         }
+
+
+
     }
 }

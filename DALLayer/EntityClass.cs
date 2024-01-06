@@ -89,8 +89,8 @@ namespace DALLayer
         public string Gender { get; set; }
 
         [Required(ErrorMessage = "Please select Date of Birth")]
-        [DataType(DataType.Date)] //from      //To      
-        [Range(typeof(DateTime), "1/1/1960", "31/12/1997", ErrorMessage = "Date of birth should be greater than 25 years")]
+        [DataType(DataType.Date)]     
+        [Range(typeof(DateTime), "1/1/1960", "31/12/1998", ErrorMessage = "Date of birth should be greater than 25 years")]
         public DateTime DOB { get; set; }
 
         [Required(ErrorMessage = "Please Enter Phone Number")]

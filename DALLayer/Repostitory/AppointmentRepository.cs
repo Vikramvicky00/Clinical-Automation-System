@@ -19,7 +19,7 @@ namespace DALLayer.Repostitory
         }
         public IEnumerable<Appointment> FindPatientAppointByName(string Name)
         {
-            IEnumerable<Appointment> appointments = _context.Appointments.Include("Patient").Where(app => app.Patient.Name.ToLower().Contains(Name.ToLower()) && app.Patient.PatientId==app.PatientId).
+            IEnumerable<Appointment> appointments = _context.Appointments.Where(app => app.Patient.Name.ToLower().Contains(Name.ToLower()) && app.Patient.PatientId==app.PatientId).
                 OrderBy(app => app.AppointmentId);
             return appointments;
         }

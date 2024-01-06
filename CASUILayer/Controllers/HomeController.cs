@@ -205,6 +205,10 @@ namespace CASUILayer.Controllers
                         service.UpdateAdmin(ad);
                         return RedirectToAction("AdminLogin");
                     }
+                    else
+                    {
+                        ModelState.AddModelError("", "Both Password Must Be Same");
+                    }
                   
                     break;
                 case 2:
@@ -220,6 +224,11 @@ namespace CASUILayer.Controllers
                         service.UpdateDoctor(doc);
                         return RedirectToAction("DoctorLogin");
                     }
+                    else
+                    {
+                        ModelState.AddModelError("", "Both Password Must Be Same");
+                    }
+
                     break;
                 case 3:
                     if (service.Checkpass(pass1, pass2))
@@ -235,6 +244,11 @@ namespace CASUILayer.Controllers
                         service.UpdatePatient(patient);
                         return RedirectToAction("PatientLogin");
                     }
+                    else
+                    {
+                        ModelState.AddModelError("", "Both Password Must Be Same");
+                    }
+
                     break;
                 case 4:
                     if (service.Checkpass(pass1, pass2))
@@ -249,6 +263,11 @@ namespace CASUILayer.Controllers
                         service.UpdateFrontOfficeExecutive(Fo);
                         return RedirectToAction("FrontOfficeLogin");
                     }
+                    else
+                    {
+                        ModelState.AddModelError("", "Both Password Must Be Same");
+                    }
+
                     break;
                         
                 case 5:
@@ -264,6 +283,11 @@ namespace CASUILayer.Controllers
                         service.UpdatePharmacist(ph);
                         return RedirectToAction("PharmacistsLogin");
                     }
+                    else
+                    {
+                        ModelState.AddModelError("", "Both Password Must Be Same");
+                    }
+
                     break;
                 default:
                     break;

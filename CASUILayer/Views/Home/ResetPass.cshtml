@@ -100,44 +100,6 @@
     </form>
  
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.querySelector('form');
-            form.addEventListener('submit', function (event) {
-                const email = document.getElementById('email');
-                const pass1 = document.getElementById('pass1');
-                const pass2 = document.getElementById('pass2');
-                let errors = [];
-
-                // Check if email is empty
-                if (!email.value.trim()) {
-                    errors.push('Email field is required.');
-                }
-
-                // Check if password 1 is empty
-                if (!pass1.value.trim()) {
-                    errors.push('Password field is required.');
-                }
-
-                // Check if password 2 is empty
-                if (!pass2.value.trim()) {
-                    errors.push('Confirm Password field is required.');
-                }
-
-                // Check if passwords match
-                if (pass1.value !== pass2.value) {
-                    errors.push('Passwords do not match!');
-                }
-
-                // Display errors if any
-                if (errors.length > 0) {
-                    event.preventDefault(); // Prevent form submission
-                    alert(errors.join('\n'));
-                }
-            });
-        });
-
-
-
         document.addEventListener("DOMContentLoaded", function () {
             const passwordInput = document.getElementById("pass1");
             const showPasswordIcon = document.getElementById("showPasswordIcon");
