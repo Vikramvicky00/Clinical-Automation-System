@@ -7,7 +7,7 @@ namespace CASUILayer.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ServiceOperations service; 
+        private  ServiceOperations service; 
 
         public HomeController()
         {
@@ -190,10 +190,10 @@ namespace CASUILayer.Controllers
         [HttpPost]
         public ActionResult ResetPass(string email,string pass1,string pass2,int SId)
         {
-            switch (SId) //go to specific case 
+            switch (SId) 
             {
                 case 1:
-                    if (service.Checkpass(pass1, pass2)) //validate the 2 password are same using check pass method in service class
+                    if (service.Checkpass(pass1, pass2)) 
                     {
                         Admin ad = service.FindAdminByEmail(email); 
                         if (ad == null)
